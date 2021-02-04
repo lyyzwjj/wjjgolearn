@@ -1,0 +1,11 @@
+go get -u github.com/easierway/concurrent_map     一定不要加 https 和git
+安装位置
+/Users/wjj/go/src/github.com/easierway/concurrent_map
+
+go 依赖管理
+安装 brew install glide
+
+进到 c_remote_package里面
+glide init
+生成一个 glide.yaml文件
+glide install 安装到c_remote_package下创建一个 vendor包装着依赖

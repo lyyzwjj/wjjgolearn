@@ -1,0 +1,30 @@
+package iaa_pipe_filter
+
+import (
+	"errors"
+	"strings"
+)
+
+/**
+ * @author  wjj
+ * @date  2020/9/8 1:32 上午
+ * @description 切分
+ */
+
+var SplitFilterWrongFormatError = errors.New("input data should be string")
+
+type SplitFilter struct {
+	delimiter string
+}
+
+func NewSplitFilter(delimiter string) *SplitFilter {
+	return &SplitFilter{delimiter}
+}
+func (sf *SplitFilter) Process(data Request) (Response, error) {
+	str, ok := data.(string) // 检查数据格式/类型,是否可以处理
+	if !ok {
+		return nil, SplitFilterWrongFormatError
+	}
+	parts := strings.Split(str, sf.delimiter)
+	return parts, nil
+}

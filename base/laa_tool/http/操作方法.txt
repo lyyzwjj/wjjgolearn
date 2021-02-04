@@ -1,0 +1,7 @@
+http://<host>:<port>/debug/pprof/
+go tool pprof http://<host>:<port>/debug/pprof/profile?seconds=10 (默认为30秒)
+go-torch -seconds 10 http://<host>:<port>/debug/pprof/profile
+
+http://127.0.0.1:8080/debug/pprof/
+go tool pprof http://127.0.0.1:8080/debug/pprof/profile?seconds=10 (默认为30秒)
+go-torch -seconds 10 http://127.0.0.1:8080/debug/pprof/profile

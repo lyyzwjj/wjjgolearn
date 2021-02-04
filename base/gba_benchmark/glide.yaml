@@ -1,0 +1,6 @@
+package: gba_benchmark
+import: []
+testImport:
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert

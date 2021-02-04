@@ -1,0 +1,18 @@
+go build prof.go
+./prof
+go tool pprof prof cpu.prof
+top
+top -cum
+list fillMatrix
+svg
+exit
+浏览器打开profile001.svg图
+go-torch cpu.prof
+
+// 需要安装graphviz 软件才可以用svg命令
+git clone https://github.com/brendangregg/FlameGraph.git
+cp FlameGraph/flamegraph.pl /usr/local/bin
+go get -v github.com/uber/go-torch
+go tool pprof prof mem.prof
+top
+list main.main

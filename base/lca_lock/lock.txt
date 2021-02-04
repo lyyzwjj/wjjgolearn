@@ -1,0 +1,4 @@
+go test -bench=. -cpuprofile=cpu.prof
+go tool pprof cpu.prof
+top -cum
+list Access

@@ -1,0 +1,6 @@
+package: gaa_unit
+import: []
+testImport:
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert

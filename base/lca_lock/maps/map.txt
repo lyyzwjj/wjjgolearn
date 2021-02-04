@@ -1,0 +1,2 @@
+go get -u github.com/easierway/concurrent_map
+go test -bench=.

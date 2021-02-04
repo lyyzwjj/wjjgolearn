@@ -1,0 +1,8 @@
+GODEBUG=gctrace=1 go test -bench=BenchmarkPassingArrayWithValue
+GODEBUG=gctrace=1 go test -bench=BenchmarkPassingArrayWithRef
+GODEBUG=gctrace=1 go test -bench=.
+go test -bench=.
+
+go test -bench=BenchmarkPassingArrayWithRef -trace=trace_ref.out
+go test -bench=BenchmarkPassingArrayWithValue -trace=trace_val.out
+go tool trace trace_ref.out

@@ -1,0 +1,9 @@
+go test -bench=.
+go test -bench=. -cpuprofile=cpu.prof
+go tool pprof cpu.prof
+top -cum
+list processRequest
+
+go test -bench=. -memprofile=mem.prof
+go tool pprof mem.prof
+top

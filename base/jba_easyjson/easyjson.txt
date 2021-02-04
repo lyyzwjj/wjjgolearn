@@ -1,0 +1,3 @@
+go get -u github.com/mailru/easyjson/...
+cd /Users/wjj/GolandProjects/golearn/geek/src/wjjgolearn/base/jba_jeasyson
+/Users/wjj/GolandProjects/golearn/geek/bin/easyjson  -all struct_def.go
