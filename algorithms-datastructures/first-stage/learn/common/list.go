@@ -73,7 +73,8 @@ type ArrayList struct {
 
 func NewArrayListWithCapacity(capacity int) *ArrayList {
 	arrayList := new(ArrayList)
-	arrayList.elements = make([]interface{}, 0, capacity)
+	arrayList.elements = make([]interface{}, capacity)
+	// println("size: " + strconv.Itoa(len(arrayList.elements)) + "capacity: " + strconv.Itoa(cap(arrayList.elements)))
 	arrayList.AbstractList.AddWithIndex = arrayList.AddWithIndex
 	arrayList.AbstractList.Remove = arrayList.Remove
 	arrayList.AbstractList.Clear = arrayList.Clear
@@ -91,7 +92,7 @@ func (arrayList *ArrayList) ensureCapacity(capacity int) {
 		return
 	}
 	newCapacity := oldCapacity + (oldCapacity >> 1)
-	newElements := make([]interface{}, 0, newCapacity)
+	newElements := make([]interface{}, newCapacity)
 	for i := 0; i < arrayList.size; i++ {
 		newElements[i] = arrayList.elements[i]
 	}
@@ -106,8 +107,6 @@ func (arrayList *ArrayList) AddWithIndex(index int, element int) {
 	for i := arrayList.size; i > index; i-- {
 		arrayList.elements[i] = arrayList.elements[i-1]
 	}
-	e := arrayList.elements[index]
-	fmt.Println(e)
 	arrayList.elements[index] = element
 	arrayList.size++
 }
@@ -125,7 +124,7 @@ func (arrayList *ArrayList) Remove(index int) (int, bool) {
 	return value, true
 }
 func (arrayList *ArrayList) Clear() {
-	for i := 0; i < arrayList.size-1; i++ {
+	for i := 0; i < arrayList.size; i++ {
 		arrayList.elements[i] = nil
 	}
 	arrayList.size = 0
