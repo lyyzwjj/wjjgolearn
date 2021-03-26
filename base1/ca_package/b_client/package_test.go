@@ -1,8 +1,8 @@
 package b_client
 
 import (
-	"wjjgolearn/base/ca_package/a_series"
 	"testing"
+	"wjjgolearn/base1/ca_package/a_series"
 )
 
 /**
