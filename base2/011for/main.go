@@ -44,12 +44,27 @@ func main() {
 			8 河
 		*/
 	}
-
+	// 九九乘法表
 	for i := 1; i < 10; i++ {
 		for j := 1; j <= i; j++ {
 			fmt.Printf("%d * %d = %d\t", i, j, i*j)
 		}
 		fmt.Println()
 	}
+	// 当i=5时, 就跳出for循环
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			break
+		}
+		fmt.Println(i)
+	}
+	fmt.Println("over")
 
+	// 当i=5时, 就跳过此次for循环 (不执行for循环内部的打印语句)
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			continue
+		}
+		fmt.Println(i)
+	}
 }
