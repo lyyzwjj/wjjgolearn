@@ -2,7 +2,7 @@ package b_client
 
 import (
 	"testing"
-	"wjjgolearn/base1/ca_package/a_series"
+	"wjjgolearn/01caichao/ca_package/a_series"
 )
 
 /**
