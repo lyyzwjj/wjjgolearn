@@ -44,8 +44,11 @@ func main() {
 
 	// make 也是用于内存分配的 区别于new 它只用于slice map 以及channel的内存创建 而且它返回的类型就是这三个类型本身 而不是他们的指针类型
 	// 因为这三种类型就是引用类型,所以没必要返回他们的指针了.
-	var b map[string]int
-	b["沙河娜扎"] = 100
-	fmt.Println(b)
+	// var b map[string]int
+	// b["沙河娜扎"] = 100		// 未初始化就调用assignment to entry in nil map
+	// fmt.Println(b)
+	var b1 = make(map[string]int)
+	b1["沙河娜扎"] = 100 // 未初始化就调用assignment to entry in nil map
+	fmt.Println(b1)
 
 }
