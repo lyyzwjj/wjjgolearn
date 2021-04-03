@@ -65,14 +65,20 @@ func f5() (x int) {
 
 func f6() (x int) {
 	defer func(x *int) { // *int 入参是int类型的指针
-		*x ++ // *x 取出x的值
+		*x++ // *x 取出x的值
 	}(&x)
 	return 5
 }
 
-// 返回值 = 5
-// x++
-// 所以返回值还是5  简单类型  是拷贝
+// 返回值 x = 5
+// *&x ++
+// 所以返回值是6
+
+func calc(index string, a, b int) int {
+	ret := a + b
+	fmt.Println(index, a, b, ret)
+	return ret
+}
 
 func main() {
 	fmt.Println(f1())
@@ -81,4 +87,16 @@ func main() {
 	fmt.Println(f4())
 	fmt.Println(f5())
 	fmt.Println(f6())
+	a := 1
+	b := 2
+	// defer 只计一层函数
+	defer calc("1", a, calc("10", a, b)) // ("1",1,3)
+	a = 0
+	defer calc("2", a, calc("20", a, b)) // ("2",0,2)
+	b = 1
 }
+
+// 10 1 2 3
+// 20 0 2 2
+// 2 0 2 2
+// 1 1 3 4
