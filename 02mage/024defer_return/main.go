@@ -51,11 +51,34 @@ func f4() (x int) {
 	return 5
 }
 
-// 匿名返回值 = x = 5
+func f5() (x int) {
+	defer func(x int) int {
+		x++ // 改变的是函数中的副本
+		return x
+	}(x)
+	return 5
+}
+
+// 返回值 y = x
+// x++
+// 所以返回值还是5  简单类型  是拷贝
+
+func f6() (x int) {
+	defer func(x *int) { // *int 入参是int类型的指针
+		*x ++ // *x 取出x的值
+	}(&x)
+	return 5
+}
+
+// 返回值 = 5
+// x++
+// 所以返回值还是5  简单类型  是拷贝
 
 func main() {
 	fmt.Println(f1())
 	fmt.Println(f2())
 	fmt.Println(f3())
 	fmt.Println(f4())
+	fmt.Println(f5())
+	fmt.Println(f6())
 }
