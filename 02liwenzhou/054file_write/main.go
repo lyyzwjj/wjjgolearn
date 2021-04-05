@@ -37,7 +37,9 @@ func writeDemo2() {
 	// 创建一个写的对象
 	wr := bufio.NewWriter(fileObj)
 	wr.WriteString("hello沙河\n") // 写到缓存中
-	wr.Flush()                  // 将缓存中的内容写入文件
+	wr.Flush()                  // 将缓存中的内容写入文件	刷盘  将内存中的写到文件中
+	// 同步刷盘 内存及时写到文件中 效率低 但是数据不会丢失
+	// 异步刷盘 内存中的内容定时写到文件中  吞吐量增加 但是发生断电等情况 内存中 缓冲区的内容数据会丢失
 }
 
 func writeDemo1() {
