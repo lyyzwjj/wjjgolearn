@@ -7,56 +7,57 @@ import (
 
 // 往终端写日志相关的内容
 
-// Logger 日志结构体
-type Logger struct {
+// ConsoleLogger 日志结构体
+type ConsoleLogger struct {
 	Level LogLevel
 }
 
-// NewLog 构造函数
-func NewLog(levelStr string) Logger {
+// NewConsoleLogger 构造函数
+func NewConsoleLogger(levelStr string) ConsoleLogger {
 	level, err := parseLogLevel(levelStr)
 	if err != nil {
 		panic(err)
 	}
-	return Logger{Level: level}
+	return ConsoleLogger{Level: level}
 }
 
-func (l Logger) enable(logLevel LogLevel) bool {
-	return logLevel >= l.Level
-}
-
-func log(lv LogLevel, msg string) {
+func (c ConsoleLogger) log(lv LogLevel, format string, a ...interface{}) {
+	msg := fmt.Sprintf(format, a...)
 	now := time.Now()
 	funcName, fileName, lineNo := getInfo(3)
-	fmt.Printf("[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), formatLogLovel(lv), fileName, funcName, lineNo, msg)
+	fmt.Printf("[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), formatLogLevel(lv), fileName, funcName, lineNo, msg)
 }
 
-func (l Logger) Debug(msg string) {
-	if l.enable(DEBUG) {
-		log(DEBUG, msg)
+func (c ConsoleLogger) enable(logLevel LogLevel) bool {
+	return logLevel >= c.Level
+}
+
+func (c ConsoleLogger) Debug(msg string, a ...interface{}) {
+	if c.enable(DEBUG) {
+		c.log(DEBUG, msg, a...)
 	}
 }
 
-func (l Logger) Info(msg string) {
-	if l.enable(INFO) {
-		log(INFO, msg)
+func (c ConsoleLogger) Info(msg string, a ...interface{}) {
+	if c.enable(INFO) {
+		c.log(INFO, msg, a...)
 	}
 }
 
-func (l Logger) Warning(msg string) {
-	if l.enable(WARNING) {
-		log(WARNING, msg)
+func (c ConsoleLogger) Warning(msg string, a ...interface{}) {
+	if c.enable(WARNING) {
+		c.log(WARNING, msg, a...)
 	}
 }
 
-func (l Logger) Error(msg string) {
-	if l.enable(ERROR) {
-		log(ERROR, msg)
+func (c ConsoleLogger) Error(msg string, a ...interface{}) {
+	if c.enable(ERROR) {
+		c.log(ERROR, msg, a...)
 	}
 }
 
-func (l Logger) Fatal(msg string) {
-	if l.enable(FATAL) {
-		log(FATAL, msg)
+func (c ConsoleLogger) Fatal(msg string, a ...interface{}) {
+	if c.enable(FATAL) {
+		c.log(FATAL, msg, a...)
 	}
 }

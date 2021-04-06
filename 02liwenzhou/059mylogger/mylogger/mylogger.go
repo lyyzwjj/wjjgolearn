@@ -41,7 +41,7 @@ func parseLogLevel(s string) (LogLevel, error) {
 		return UNKNOWN, err
 	}
 }
-func formatLogLovel(lv LogLevel) string {
+func formatLogLevel(lv LogLevel) string {
 	switch lv {
 	case DEBUG:
 		return "DEBUG"
@@ -59,11 +59,6 @@ func formatLogLovel(lv LogLevel) string {
 		return "UNKNOWN"
 	}
 }
-
-func main() {
-
-}
-
 func getInfo(skip int) (funcName, fileName string, lineNo int) {
 	pc, file, line, ok := runtime.Caller(skip)
 	if !ok {
