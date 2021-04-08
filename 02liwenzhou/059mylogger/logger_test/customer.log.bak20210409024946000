@@ -1,6 +1,3 @@
-[2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
-[2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
-[2021-04-09 02:49:46] [FATAL] [main.go:main:18] 这是一条fatal日志
 [2021-04-09 02:49:46] [INFO] [main.go:main:13] 这是一条info日志
 [2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
 [2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
@@ -105,3 +102,32 @@
 [2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
 [2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
 [2021-04-09 02:49:46] [FATAL] [main.go:main:18] 这是一条fatal日志
+[2021-04-09 02:49:46] [INFO] [main.go:main:13] 这是一条info日志
+[2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
+[2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
+[2021-04-09 02:49:46] [FATAL] [main.go:main:18] 这是一条fatal日志
+[2021-04-09 02:49:46] [INFO] [main.go:main:13] 这是一条info日志
+[2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
+[2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
+[2021-04-09 02:49:46] [FATAL] [main.go:main:18] 这是一条fatal日志
+[2021-04-09 02:49:46] [INFO] [main.go:main:13] 这是一条info日志
+[2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
+[2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
+[2021-04-09 02:49:46] [FATAL] [main.go:main:18] 这是一条fatal日志
+[2021-04-09 02:49:46] [INFO] [main.go:main:13] 这是一条info日志
+[2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
+[2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
+[2021-04-09 02:49:46] [FATAL] [main.go:main:18] 这是一条fatal日志
+[2021-04-09 02:49:46] [INFO] [main.go:main:13] 这是一条info日志
+[2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
+[2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
+[2021-04-09 02:49:46] [FATAL] [main.go:main:18] 这是一条fatal日志
+[2021-04-09 02:49:46] [INFO] [main.go:main:13] 这是一条info日志
+[2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
+[2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
+[2021-04-09 02:49:46] [FATAL] [main.go:main:18] 这是一条fatal日志
+[2021-04-09 02:49:46] [INFO] [main.go:main:13] 这是一条info日志
+[2021-04-09 02:49:46] [WARNING] [main.go:main:14] 这是一条info日志
+[2021-04-09 02:49:46] [ERROR] [main.go:main:17] 这是一条error日志,id:10010, name:理想
+[2021-04-09 02:49:46] [FATAL] [main.go:main:18] 这是一条fatal日志
+[2021-04-09 02:49:46] [INFO] [main.go:main:13] 这是一条info日志
