@@ -109,7 +109,7 @@ func main() {
 	time.Sleep(time.Duration(n))
 
 	// 定时器
-	// Timer()
+	Timer()
 }
 
 func Timer() {
