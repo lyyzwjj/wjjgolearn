@@ -21,7 +21,6 @@ import (
 //}
 
 const (
-	elementNotFound = -1
 	defaultCapacity = 10
 )
 
@@ -30,9 +29,9 @@ type AbstractList struct {
 	AddWithIndex func(index int, element int)
 	Remove       func(index int) (int, bool)
 	Clear        func()
-	Get          func(index int) (int, bool)
+	Get          func(index int) *int
 	Set          func(index int, element int) (int, bool)
-	IndexOf      func(element int) int
+	IndexOf      func(element int) *int
 }
 
 func (al *AbstractList) Add(element int) {
@@ -47,10 +46,10 @@ func (al *AbstractList) IsEmpty() bool {
 	return al.size == 0
 }
 func (al *AbstractList) Contains(element int) bool {
-	return al.IndexOf(element) != elementNotFound
+	return al.IndexOf(element) != nil
 }
 func (al *AbstractList) RemoveElement(element int) {
-	al.Remove(al.IndexOf(element))
+	al.Remove(*al.IndexOf(element))
 }
 
 func (al *AbstractList) rangeCheck(index int) error {
@@ -129,13 +128,13 @@ func (arrayList *ArrayList) Clear() {
 	}
 	arrayList.size = 0
 }
-func (arrayList *ArrayList) Get(index int) (int, bool) {
+func (arrayList *ArrayList) Get(index int) *int {
 	if err := arrayList.rangeCheck(index); err != nil {
 		fmt.Println(err)
-		return 0, false
+		return nil
 	}
 	value, _ := arrayList.elements[index].(int)
-	return value, true
+	return &value
 }
 func (arrayList *ArrayList) Set(index int, element int) (int, bool) {
 	if err := arrayList.rangeCheck(index); err != nil {
@@ -146,11 +145,11 @@ func (arrayList *ArrayList) Set(index int, element int) (int, bool) {
 	arrayList.elements[index] = element
 	return oldValue, true
 }
-func (arrayList *ArrayList) IndexOf(element int) int {
+func (arrayList *ArrayList) IndexOf(element int) *int {
 	for i := 0; i < arrayList.size; i++ {
 		if arrayList.elements[i] == element {
-			return i
+			return &i
 		}
 	}
-	return elementNotFound
+	return nil
 }

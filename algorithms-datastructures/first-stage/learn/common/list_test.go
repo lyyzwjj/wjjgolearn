@@ -11,7 +11,7 @@ func TestArrayList(t *testing.T) {
 		list.Add(i)
 	}
 	fmt.Println(list)
-	fmt.Println(list.Get(2))
+	fmt.Println(*list.Get(2))
 	fmt.Println(list.Contains(2))
 	fmt.Println(list.Remove(2))
 	fmt.Println(list.Contains(2))
