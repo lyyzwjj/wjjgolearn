@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net"
+	"wjjgolearn/02liwenzhou/083tcp_sticky_solve/protocol"
 )
 
 // socket_stick/server/main.go
@@ -13,17 +14,25 @@ import (
 func process(conn net.Conn) {
 	defer conn.Close()
 	reader := bufio.NewReader(conn)
-	var buf [1024]byte
+	// var buf [1024]byte
 	for {
-		n, err := reader.Read(buf[:])
+		//n, err := reader.Read(buf[:])
+		//if err == io.EOF {
+		//	break
+		//}
+		//if err != nil {
+		//	fmt.Println("read from client failed, err:", err)
+		//	break
+		//}
+		//recvStr := string(buf[:n])
+		recvStr, err := protocol.Decode(reader)
 		if err == io.EOF {
-			break
+			return
 		}
 		if err != nil {
-			fmt.Println("read from client failed, err:", err)
-			break
+			fmt.Println("decode failed, err", err)
+			return
 		}
-		recvStr := string(buf[:n])
 		fmt.Println("收到client发来的数据：", recvStr)
 	}
 }

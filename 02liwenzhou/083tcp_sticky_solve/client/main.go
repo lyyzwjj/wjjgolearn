@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net"
+	"wjjgolearn/02liwenzhou/083tcp_sticky_solve/protocol"
 )
 
 // tcp/client/main.go
@@ -19,6 +20,12 @@ func main() {
 	defer conn.Close()
 	for i := 0; i < 20; i++ {
 		msg := `Hello, Hello. How are you?`
-		conn.Write([]byte(msg))
+		// 调用协议编码数据
+		b, err := protocol.Encode(msg)
+		if err != nil {
+			fmt.Println("encode failed, err", err)
+			return
+		}
+		conn.Write(b)
 	}
 }
