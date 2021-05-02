@@ -19,6 +19,10 @@ func main() {
 	defer conn.Close()
 	for i := 0; i < 20; i++ {
 		msg := `Hello, Hello. How are you?`
-		conn.Write([]byte(msg))
+		msgByte := []byte(msg)
+		//head := [4]byte{26, 0, 0, 0}
+		//bytes := append(head[:], msgByte...)
+		//conn.Write(bytes)
+		conn.Write(msgByte)
 	}
 }

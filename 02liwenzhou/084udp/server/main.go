@@ -21,7 +21,7 @@ func main() {
 	// 不需要建立连接，直接收发数据
 	var data [1024]byte
 	for {
-		n, addr, err := conn.ReadFromUDP(data[:])
+		n, addr, err := conn.ReadFromUDP(data[:]) // 一个客户端每次可能收到不同源 addr port发过来的消息
 		if err != nil {
 			fmt.Println("read from UDP failed, err", err)
 			return

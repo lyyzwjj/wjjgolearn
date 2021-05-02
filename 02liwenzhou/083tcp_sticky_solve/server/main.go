@@ -9,7 +9,15 @@ import (
 )
 
 // socket_stick/server/main.go
-// Nagle算法
+// Nagle算法  客户端攒了很多tcp包 攒到一定程度再发给server端   客户端没收到上一次发送的包的ack 并且本次发的包很小 就会有Nagle 等到大于MSS
+// 只允许有一个未被ack的包
+/*
+	若是包长度达到MSS，则容许发送
+	若是包含FIN，则容许发送
+	若是设置了TCP_NODELAY，则容许发送
+	未设置TCP_CORK选项时，若全部发出去的小数据包（包长度小于MSS）均被确认，则容许发送
+	上述条件都未知足，但发生了超时（通常为200ms），则当即发送。
+*/
 
 func process(conn net.Conn) {
 	defer conn.Close()
