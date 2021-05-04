@@ -1,6 +1,8 @@
 package main
 
 // go 连接mysql示例
+// 下载mysql 驱动库
+// go get -u github.com/go-sql-driver/mysql
 
 import (
 	"database/sql"
