@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"net"
-	"wjjgolearn/02liwenzhou/083tcp_sticky_solve/protocol"
+
+	"github.com/wzzst310/wjjgolearn/02liwenzhou/083tcp_sticky_solve/protocol"
 )
 
 // tcp/client/main.go

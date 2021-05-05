@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"io"
 	"net"
-	"wjjgolearn/02liwenzhou/083tcp_sticky_solve/protocol"
+
+	"github.com/wzzst310/wjjgolearn/02liwenzhou/083tcp_sticky_solve/protocol"
 )
 
 // socket_stick/server/main.go

@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"wjjgolearn/02liwenzhou/086split_string"
+
+	_86split_string "github.com/wzzst310/wjjgolearn/02liwenzhou/086split_string"
 )
 
 // Split 切割字符串

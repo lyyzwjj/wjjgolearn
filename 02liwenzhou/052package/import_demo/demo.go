@@ -9,9 +9,11 @@ package main
 // 多个包都定义了`init()`,则它们的执行顺序见package2图
 import (
 	"fmt"
-	myCalc "wjjgolearn/02liwenzhou/052package/10calc" // 包名字不合法时候  取别名
+
+	myCalc "github.com/wzzst310/wjjgolearn/02liwenzhou/052package/10calc" // 包名字不合法时候  取别名
+
 	// "github.com/wzzst310/wjjgolearn/02liwenzhou/052package/calc"
-	"wjjgolearn/02liwenzhou/052package/calc" // 同一个模块就没必要加域名引用
+	"github.com/wzzst310/wjjgolearn/02liwenzhou/052package/calc" // 同一个模块就没必要加域名引用
 	// _ "github.com/mailru/easyjson"	// 只导包 不用方法	导包会触发调用init()方法  mysql驱动包
 	// "github.com/wzzst310/goprojecttest/haha" // 加了github域名的会从github上面找不管本地有没有
 )
