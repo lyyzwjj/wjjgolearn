@@ -1,4 +1,4 @@
-module wjjgolearn
+module github.com/wzzst310/wjjgolearn
 
 go 1.16
 

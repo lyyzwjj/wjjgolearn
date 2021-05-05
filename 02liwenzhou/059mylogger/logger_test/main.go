@@ -1,7 +1,7 @@
 package main
 
 import (
-	"wjjgolearn/02liwenzhou/059mylogger/mylogger"
+	"github.com/wzzst310/wjjgolearn/02liwenzhou/059mylogger/mylogger"
 )
 
 var log mylogger.Logger // 声明一个全局的全局变量
