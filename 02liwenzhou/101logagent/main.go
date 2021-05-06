@@ -30,11 +30,13 @@ func main() {
 		fmt.Printf("init Kafka failed, err:%v\n", err)
 		return
 	}
+	fmt.Println("init kafka success")
 	// 2. 打开日志文件准备日志
 	err = taillog.Init("./my.log")
 	if err != nil {
 		fmt.Printf("Init taillog failed, err:%v\n", err)
 		return
 	}
+	fmt.Println("init taillog success")
 	run()
 }
