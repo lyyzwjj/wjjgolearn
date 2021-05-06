@@ -1,4 +1,4 @@
-package _101logagent
+package main
 
 import (
 	"fmt"
