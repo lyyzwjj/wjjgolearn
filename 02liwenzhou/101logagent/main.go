@@ -2,13 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/101logagent/kafka"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/101logagent/taillog"
 	"time"
 )
 
 // logAgent入口程序
-
+// ./kafka-console-consumer.sh --bootstrap-server=127.0.0.1:9092 --topic=web_log --from-beginning 手动消费
 func run() {
 	// 1. 读取日志
 	for {
