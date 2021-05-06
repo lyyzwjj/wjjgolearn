@@ -1,17 +1,17 @@
-package main
+package taillog
 
 import (
 	"fmt"
 	"github.com/hpcloud/tail"
-	"time"
 )
 
-// tailf的用法示例
+// 专门从日志文件收集之日志的模块
 
-// go get github.com/hpcloud/tail
+var (
+	tailObj *tail.Tail
+)
 
-func main() {
-	fileName := "./my.log"
+func Init(fileName string) (err error) {
 	config := tail.Config{
 		ReOpen: true, // 重新打开  日志分隔时候 重新打开文件
 		Follow: true, // 是否跟随   原本是my.log  变成my20210507.log  没读完要跟着读
@@ -22,22 +22,14 @@ func main() {
 		MustExist: false, // 文件不存在不报错
 		Poll:      true,
 	}
-	tails, err := tail.TailFile(fileName, config) // 读取文件内容放到tails 通道中
+	tailObj, err = tail.TailFile(fileName, config) // 读取文件内容放到tails 通道中
 	if err != nil {
 		fmt.Println("tail fail failed, err", err)
 		return
 	}
-	var (
-		msg *tail.Line
-		ok  bool
-	)
-	for {
-		msg, ok = <-tails.Lines // 从tails通道中读取文件内容
-		if !ok {
-			fmt.Printf("tail file close reopen, filename:%s\n", tails.Filename)
-			time.Sleep(time.Second) // 如果没读到睡1s
-			continue
-		}
-		fmt.Println("msg", msg.Text)
-	}
+	return
+}
+
+func ReadChan() <-chan *tail.Line {
+	return tailObj.Lines
 }
