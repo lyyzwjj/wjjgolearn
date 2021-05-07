@@ -1,13 +1,15 @@
 package conf
 
+// go get gopkg.in/ini.v1
+
 type AppConf struct {
-	KafkaConf
-	TailllogConf
+	KafkaConf    `ini:"kafka"`
+	TailllogConf `ini:"taillog"`
 }
 type KafkaConf struct {
-	Address string
-	Topic   string
+	Address string `ini:"address"`
+	Topic   string `ini:"topic"`
 }
 type TailllogConf struct {
-	FileName string
+	FileName string `ini:"filename"`
 }
