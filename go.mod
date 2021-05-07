@@ -14,5 +14,6 @@ require (
 	github.com/onsi/gomega v1.12.0 // indirect
 	github.com/smartystreets/goconvey v1.6.4
 	github.com/stretchr/testify v1.7.0
+	go.etcd.io/etcd/client/v3 v3.5.0-alpha.0 // indirect
 	gopkg.in/ini.v1 v1.62.0
 )
