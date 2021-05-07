@@ -37,7 +37,7 @@ func main() {
 	//fmt.Println(cfgRow.Section("kafka").Key("topic").String())
 	//fmt.Println(cfgRow.Section("taillog").Key("path").String())
 
-	err := ini.MapTo(cfg, "../conf/config.ini")
+	err := ini.MapTo(cfg, "./conf/config.ini")
 	if err != nil {
 		fmt.Printf("load ini failed, err:%v\n", err)
 		return
