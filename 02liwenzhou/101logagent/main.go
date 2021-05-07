@@ -5,12 +5,11 @@ import (
 	"github.com/wzzst310/wjjgolearn/02liwenzhou/101logagent/conf"
 	"github.com/wzzst310/wjjgolearn/02liwenzhou/101logagent/kafka"
 	"github.com/wzzst310/wjjgolearn/02liwenzhou/101logagent/taillog"
-	"gopkg.in/ini.v1"
 	"time"
 )
 
 var (
-	cfg conf.AppConf
+	cfg *conf.AppConf
 )
 
 // logAgent入口程序
