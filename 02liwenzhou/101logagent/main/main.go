@@ -20,6 +20,7 @@ func run() {
 	for {
 		select {
 		case line := <-taillog.ReadChan():
+			fmt.Println(line.Text)
 			// 2. 发送到kafka
 			kafka.SentToKafka(cfg.KafkaConf.Topic, line.Text)
 		default:
@@ -42,6 +43,7 @@ func main() {
 		return
 	}
 	// 1. 初始化kafka连接
+	fmt.Println(cfg.KafkaConf.Address)
 	err = kafka.Init([]string{cfg.KafkaConf.Address})
 	if err != nil {
 		fmt.Printf("init Kafka failed, err:%v\n", err)
@@ -49,6 +51,7 @@ func main() {
 	}
 	fmt.Println("init kafka success")
 	// 2. 打开日志文件准备日志
+	fmt.Println(cfg.TailllogConf.FileName)
 	err = taillog.Init(cfg.TailllogConf.FileName)
 	if err != nil {
 		fmt.Printf("Init taillog failed, err:%v\n", err)
