@@ -16,20 +16,6 @@ var (
 
 // logAgent入口程序
 // ./kafka-console-consumer.sh --bootstrap-server=127.0.0.1:9092 --topic=web_log --from-beginning 手动消费
-func run() {
-	// 1. 读取日志
-	for {
-		select {
-		case line := <-taillog.ReadChan():
-			fmt.Println(line.Text)
-			// 2. 发送到kafka
-			// kafka.SentToKafka(cfg.KafkaConf.Topic, line.Text)
-		default:
-			time.Sleep(time.Second)
-		}
-	}
-
-}
 
 func main() {
 	// 0. 加载配置文件
@@ -40,8 +26,8 @@ func main() {
 		return
 	}
 	// 1. 初始化kafka连接
-	fmt.Println(cfg.KafkaConf.Address)
-	err = kafka.Init([]string{cfg.KafkaConf.Address})
+	// fmt.Println(cfg.KafkaConf.Address)
+	err = kafka.Init([]string{cfg.KafkaConf.Address}, cfg.KafkaConf.ChanMaxSize)
 	if err != nil {
 		fmt.Printf("init Kafka failed, err:%v\n", err)
 		return
@@ -57,16 +43,21 @@ func main() {
 	fmt.Println("init etcd success")
 
 	// 2.1 从etcd中获取日志收集项的配置信息
-	logEntryConf, err := etcd.GetConf("/xxx")
+	logEntryConf, err := etcd.GetConf(cfg.EtcdConf.Key)
 	// 2.2 派一个哨兵去监视日志收集项的变化(有变化及时通知我的logAgent实现热加载配置)
 	if err != nil {
 		fmt.Printf("etcd GetConf failed,err:%v\n", err)
 		return
 	}
-	fmt.Printf("get conf from etcd success, %v\n", logEntryConf)
+	// fmt.Printf("get conf from etcd success, %v\n", logEntryConf)
 	for index, value := range logEntryConf {
 		fmt.Printf("index:%v value:%v\n", index, value)
 	}
+	// 3. 收集日志发往kafka
+	// 3.1 循环每一个日志收集项,创建TailObj
+	taillog.Init(logEntryConf)
+	time.Sleep(1000 * time.Hour)
+
 	// 2. 打开日志文件准备日志
 	//fmt.Println(cfg.TailllogConf.FileName)
 	//err = taillog.Init(cfg.TailllogConf.FileName)

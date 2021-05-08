@@ -25,8 +25,8 @@ func main() {
 	defer cli.Close()
 	// put
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	value := `[{"path":"/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/nginx.log","topic":"web_log"},{"path":"/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/redis.log","topic":"redis_log"}]`
-	_, err = cli.Put(ctx, "/xxx", value)
+	value := `[{"path":"/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/nginx.log","topic":"web_log"},{"path":"/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/redis.log","topic":"redis_log"},{"path":"/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/mysql.log","topic":"mysql_log"}]`
+	_, err = cli.Put(ctx, "/logagent/collect_config", value)
 	// _, err = cli.Put(ctx, "qimi", "dsb",clientv3.WithPrefix()) 可以设置前缀
 	cancel()
 	if err != nil {
