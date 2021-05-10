@@ -6,6 +6,7 @@ import (
 	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/etcd"
 	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/kafka"
 	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/taillog"
+	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/utils"
 	"gopkg.in/ini.v1"
 	"sync"
 	"time"
@@ -42,15 +43,19 @@ func main() {
 		return
 	}
 	fmt.Println("init etcd success")
-
+	// 为了实现每个logagent都拉取自己独有的配置.所以要以自己的IP地址作为区分
 	// 2.1 从etcd中获取日志收集项的配置信息
-	logEntryConf, err := etcd.GetConf(cfg.EtcdConf.Key)
+	ipStr, err := utils.GetOutBoundIP()
+	if err != nil {
+		panic(err)
+	}
+	etcdConfKey := fmt.Sprintf(cfg.EtcdConf.Key, ipStr)
+	logEntryConf, err := etcd.GetConf(etcdConfKey)
 	if err != nil {
 		fmt.Printf("etcd GetConf failed,err:%v\n", err)
 		return
 	}
 	// 2.2 派一个哨兵去监视日志收集项的变化(有变化及时通知我的logAgent实现热加载配置)
-
 	// fmt.Printf("get conf from etcd success, %v\n", logEntryConf)
 	for index, value := range logEntryConf {
 		fmt.Printf("index:%v value:%v\n", index, value)
@@ -61,7 +66,7 @@ func main() {
 	newConfChan := taillog.NewConfChan() // 从taillog 包中获取对外暴露的通道
 	var wg sync.WaitGroup
 	wg.Add(1)
-	go etcd.WatchConf(cfg.EtcdConf.Key, newConfChan) // 哨兵发现最新的配置信息会通知上面的那个通道
+	go etcd.WatchConf(etcdConfKey, newConfChan) // 哨兵发现最新的配置信息会通知上面的那个通道
 	wg.Wait()
 
 	// 2. 打开日志文件准备日志

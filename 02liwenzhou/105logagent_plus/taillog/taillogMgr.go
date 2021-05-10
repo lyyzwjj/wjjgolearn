@@ -65,6 +65,7 @@ func (t *tailLogMgr) run() {
 					mk := fmt.Sprintf("%s_%s", c1.Path, c1.Topic)
 					// t.tskMap[mk] == tailObj
 					t.tskMap[mk].cancelFunc()
+					delete(t.tskMap, mk)
 				}
 			}
 			// 1. 配置新增

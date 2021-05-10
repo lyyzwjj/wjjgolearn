@@ -60,6 +60,7 @@ func (t *TailTask) run() {
 		select {
 		case <-t.ctx.Done():
 			fmt.Printf("tail task:%s_%s 结束了...\n", t.path, t.topic)
+			return
 		case line := <-t.instance.Lines: // 从tailObj通道中一行一行的读取日志数据
 			// 3.2 发往kafka
 			// kafka.SentToKafka(t.topic, line.Text) // 函数调用函数 发送到kafka要排队发送
