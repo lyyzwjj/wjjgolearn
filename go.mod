@@ -11,8 +11,9 @@ require (
 	github.com/jmoiron/sqlx v1.3.3
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/mailru/easyjson v0.7.7
+	github.com/olivere/elastic/v7 v7.0.24
 	github.com/onsi/gomega v1.12.0 // indirect
 	github.com/smartystreets/goconvey v1.6.4
 	github.com/stretchr/testify v1.7.0
-	go.etcd.io/etcd/client/v3 v3.5.0-alpha.0 // indirect
+	go.etcd.io/etcd/client/v3 v3.5.0-alpha.0
 )
