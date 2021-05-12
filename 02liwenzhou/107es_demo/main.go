@@ -6,6 +6,8 @@ import (
 	"github.com/olivere/elastic/v7"
 )
 
+// go get github.com/olivere/elastic/v7
+
 // es insert data demo
 // Student ...
 type Student struct {

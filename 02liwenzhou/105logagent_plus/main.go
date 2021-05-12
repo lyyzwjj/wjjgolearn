@@ -28,14 +28,13 @@ func main() {
 		return
 	}
 	// 1. 初始化kafka连接
-	// fmt.Println(cfg.KafkaConf.Address)
 	err = kafka.Init([]string{cfg.KafkaConf.Address}, cfg.KafkaConf.ChanMaxSize)
 	if err != nil {
 		fmt.Printf("init Kafka failed, err:%v\n", err)
 		return
 	}
 	fmt.Println("init kafka success")
-
+	// fmt.Println(cfg.KafkaConf.Address)
 	// 2. 初始化etcd
 	err = etcd.Init(cfg.EtcdConf.Address, time.Duration(cfg.EtcdConf.Timeout)*time.Second)
 	if err != nil {
