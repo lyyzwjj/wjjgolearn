@@ -39,6 +39,7 @@ func main() {
 	}
 	// fmt.Println("init kafka success")
 	select {}
+	fmt.Println("init kafka success")
 	// 1. 从kafka取日志数据
 	// 2. 发往ES
 	// 3.

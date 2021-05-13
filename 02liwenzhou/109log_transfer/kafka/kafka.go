@@ -42,6 +42,7 @@ func Init(addrs []string, topic string) error {
 			}
 		}(pc)
 	}
+	// time.Sleep(time.Second * 10)
 	select {}
 	return err
 }
