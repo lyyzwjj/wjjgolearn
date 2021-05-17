@@ -22,7 +22,7 @@ type MemorySession struct {
 }
 
 // NewMemorySession 构造函数
-func NewMemorySession(id string) Session {
+func NewMemorySession(id string) *MemorySession {
 	s := &MemorySession{
 		sessionId: id,
 		data:      make(map[string]interface{}, 16),

@@ -39,6 +39,8 @@ func (s *MemorySessionMgr) CreateSession() (session Session, err error) {
 	// 转string
 	sessionId := id.String()
 	session = NewMemorySession(sessionId)
+	// 加入到大map
+	s.sessionMap[sessionId] = session
 	return
 }
 
@@ -47,7 +49,7 @@ func (s *MemorySessionMgr) Get(sessionId string) (session Session, err error) {
 	defer s.rwLock.Unlock()
 	session, ok := s.sessionMap[sessionId]
 	if !ok {
-		err = errors.New("sessionId not exists in sessionMap")
+		err = errors.New("session not exists")
 		return
 	}
 	return

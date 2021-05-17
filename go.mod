@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/Shopify/sarama v1.29.0
 	github.com/easierway/concurrent_map v1.0.0
+	github.com/garyburd/redigo v1.6.2 // indirect
 	github.com/gin-gonic/gin v1.7.1 // indirect
 	github.com/go-playground/validator/v10 v10.6.1 // indirect
 	github.com/go-redis/redis v6.15.9+incompatible
