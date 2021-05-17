@@ -3,6 +3,7 @@ module github.com/wzzst310/wjjgolearn/02liwenzhou
 go 1.16
 
 require (
+	github.com/DeanThompson/ginpprof v0.0.0-20201112072838-007b1e56b2e1 // indirect
 	github.com/Shopify/sarama v1.29.0
 	github.com/garyburd/redigo v1.6.2
 	github.com/gin-gonic/gin v1.7.1
