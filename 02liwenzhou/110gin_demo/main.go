@@ -30,7 +30,7 @@ func main() {
 	// 核心是 gin.New() 也可以直接创建不带中间件的路由
 	// r := gin.New()
 
-	// 不同的接口
+	// 不同的入参接口
 	//helloWorld(r)
 	//apiParam(r)
 	//urlParam(r)
@@ -38,30 +38,73 @@ func main() {
 	//uploadFile(r)
 	//uploadFiles(r)
 
-	//ginGroup(r)
+	// gin的router前缀树
+	// ginGroup(r)	类似RequestMapping
 	// ginRouterTree(r)
 
+	// 入参绑定
 	// jsonBinding(r)
 	// formBinding(r)
 	// uriBinding(r)
 
+	// 出参渲染
 	// render(r)
 	// htmlRender(r)
 
+	// 重定向
 	// redirect(r)
+
+	// 异步执行
 	// async(r)
 
+	// 中间件
 	// middlewareFunc(r)
+	// middlewareExercise(r)
 
-	// middlewareExecise(r)
+	// cookie 和session
+	// cookie(r)
 
-	cookie(r)
+	// authMiddleWareDemo(r)
 
 	// 3. 监听端口,默认在8080
 	// r.Run()
 	r.Run(":8000")
 }
 
+func authMiddleWare() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		if cookie, err := c.Cookie("abc"); err == nil {
+			if cookie == "123" {
+				c.Next()
+				return
+			}
+		}
+		// 返回错误
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "err"})
+		// 若验证不通过,不再调用后续的函数处理
+		c.Abort()
+		return
+	}
+}
+
+func authMiddleWareDemo(r *gin.Engine) {
+	r.GET("/login", func(c *gin.Context) {
+		// 设置cookie
+		c.SetCookie("abc", "123", 60, "/",
+			"localhost", false, true)
+		// 返回信息
+		c.String(200, "Login success!")
+	})
+	r.GET("/home", authMiddleWare(), func(c *gin.Context) {
+		c.JSON(200, gin.H{"data": "home"})
+	})
+}
+
+// cookie缺点
+// 1. 不安全,明文
+// 2. 增加带宽消耗
+// 3. 可以被禁用
+// 4. cookie有上限
 // cookie  cookie 使用操作
 func cookie(r *gin.Engine) {
 	r.GET("/cookie", func(c *gin.Context) {
@@ -82,7 +125,7 @@ func cookie(r *gin.Engine) {
 	})
 }
 
-func middlewareExecise(r *gin.Engine) {
+func middlewareExercise(r *gin.Engine) {
 	// 注册中间件另外实现
 	r.Use(MyTime)
 	// {} 为了代码规范

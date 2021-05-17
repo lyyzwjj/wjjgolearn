@@ -17,6 +17,7 @@ require (
 	github.com/mailru/easyjson v0.7.7
 	github.com/olivere/elastic/v7 v7.0.24
 	github.com/onsi/gomega v1.12.0 // indirect
+	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/smartystreets/goconvey v1.6.4
 	github.com/stretchr/testify v1.7.0
 	github.com/ugorji/go v1.2.5 // indirect
