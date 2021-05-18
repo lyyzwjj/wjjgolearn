@@ -10,7 +10,7 @@ import (
 func main() {
 	//1 加载数据库
 	router := gin.Default()
-	dns := `root:123456@tcp(127.0.0.1:3306)/blogger?charset=utf8&parseTime=true`
+	dns := `root:Wzzst310@163.com@tcp(wjjzst.com:3306)/blogger?charset=utf8&parseTime=true`
 	err := db.Init(dns)
 	if err != nil {
 		panic(err)
