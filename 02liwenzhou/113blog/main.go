@@ -16,6 +16,7 @@ func main() {
 		panic(err)
 	}
 	ginpprof.Wrapper(router)
+	// router.StaticFS("/static", http.Dir("/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/113blog/static"))
 	router.Static("/static/", "./static")
 	router.LoadHTMLGlob("views/*")
 	router.GET("/", controller.IndexHandle)
