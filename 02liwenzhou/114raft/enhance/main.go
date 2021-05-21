@@ -24,10 +24,11 @@ type Raft struct {
 	node nodeInfo
 	mu   sync.Mutex
 	//当前节点编号
-	me            int
-	currentTerm   int
-	votedFor      int
-	state         int
+	me          int
+	currentTerm int
+	votedFor    int
+	state       int
+	// 超时时间
 	timeout       int
 	currentLeader int
 	//该节点最后一次处理数据的时间
@@ -81,7 +82,7 @@ func main() {
 		//封装nodeInfo对象
 		node := nodeInfo{id: userId, port: nodeTable[userId]}
 		//创建节点对象
-		rf := Make(id)
+		rf := NewRaft(id)
 		//确保每个新建立的节点都有端口对应
 		//127.0.0.1:8000
 		rf.node = node
@@ -185,7 +186,7 @@ func (node *Raft) raftRegisterRPC(port string) {
 }
 
 //创建节点对象
-func Make(me int) *Raft {
+func NewRaft(me int) *Raft {
 	rf := &Raft{}
 	rf.me = me
 	rf.votedFor = -1

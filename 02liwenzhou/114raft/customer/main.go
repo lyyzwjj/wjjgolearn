@@ -262,7 +262,9 @@ func (rf *Raft) getRequest(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		rpcClient.Call("Raft.ForwardingMessage", param, &bo)
+		// TODO
+		// rpcClient.Call()
+		println(rpcClient)
 	}
 
 }
