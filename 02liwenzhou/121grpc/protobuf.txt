@@ -1,0 +1,14 @@
+	go get github.com/golang/protobuf/proto
+	go get google.golang.org/grpc
+
+proto 转换成 go文件
+protoc -I . --go_out=plugins=grpc:. ./user.proto
+// protoc -I=. --java_out=./  ./user.proto
+// protoc -I=. --java_out=./ blog/*.proto
+
+
+go get google.golang.org/grpc
+go get google.golang.org/grpc/codes
+go get google.golang.org/grpc/status
+go get google.golang.org/protobuf/reflect/protoreflect
+go get google.golang.org/protobuf/runtime/protoimpl
