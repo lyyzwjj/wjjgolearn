@@ -12,6 +12,10 @@ type Options struct {
 	// 注册地址
 	//   /a/b/c/xxx/10.xxxx
 	RegistryPath string
+	// 用户名
+	Username string
+	// 密码
+	Password string
 }
 
 // Option 定义函数类型的变量
@@ -35,5 +39,15 @@ func WithHeartBeat(heartBeat int64) Option {
 func WithRegistryPath(path string) Option {
 	return func(opts *Options) {
 		opts.RegistryPath = path
+	}
+}
+func WithUsername(username string) Option {
+	return func(opts *Options) {
+		opts.Username = username
+	}
+}
+func WithPassword(password string) Option {
+	return func(opts *Options) {
+		opts.Password = password
 	}
 }

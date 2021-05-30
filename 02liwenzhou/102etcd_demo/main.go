@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	clientv3 "go.etcd.io/etcd/client/v3"
+	"log"
 	"time"
 )
 
@@ -45,6 +46,24 @@ func main() {
 	for _, ev := range resp.Kvs {
 		fmt.Printf("%s:%s\n", ev.Key, ev.Value)
 	}
-	// watch
+	// 续期
+	// etcd 续期 5秒内客户端要返回心跳
+	r, err := cli.Grant(context.TODO(), 5)
+	if err != nil {
+		log.Fatal(err)
+	}
+	_, err = cli.Put(context.TODO(), "root", "admin", clientv3.WithLease(r.ID))
+	if err != nil {
+		log.Fatal(err)
+	}
+	// 自动续期   			// 续期对象ID
+	ch, err := cli.KeepAlive(context.TODO(), r.ID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for {
+		c := <-ch
+		fmt.Println("c:", c)
+	}
 
 }

@@ -15,3 +15,8 @@ type Node struct {
 	Port   int    `json:"port"`
 	Weight int    `json:"weight"`
 }
+
+// AllServiceInfo 存放所有服务信息 存入atomic.Value 为了防止并发
+type AllServiceInfo struct {
+	ServiceMap map[string]*Service //节点信息 servicename node
+}
