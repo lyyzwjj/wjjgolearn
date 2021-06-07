@@ -1,5 +1,10 @@
 package graph
 
+import (
+	"fmt"
+	"strconv"
+)
+
 type Graph interface {
 	VerticesSize() int
 	EdgesSize() int
@@ -20,11 +25,8 @@ type vertex struct {
 	outEdges map[edgeKey]interface{}
 }
 
-func (v *vertex) GetVertexKey() vertexKey {
-	vertexKey := vertexKey{
-		value: v.value,
-	}
-	return vertexKey
+func (v *vertex) ToString() string {
+	return strconv.Itoa(v.value)
 }
 
 type GetVertexKey struct {
@@ -38,6 +40,8 @@ func newVertex(value int) *vertex {
 		vertexKey: vertexKey{
 			value: value,
 		},
+		inEdges:  make(map[edgeKey]interface{}),
+		outEdges: make(map[edgeKey]interface{}),
 	}
 	return vertex
 }
@@ -63,6 +67,14 @@ func (e *edge) GetEdgeKey() edgeKey {
 		},
 	}
 	return edgeKey
+}
+func (e *edge) ToString() (str string) {
+	weight := "nil"
+	if e.weight != nil {
+		weight = strconv.Itoa(*e.weight)
+	}
+	str = fmt.Sprintf("Edge {from=%#v, to=%#v, weight=%#v}", e.from.ToString(), e.to.ToString(), weight)
+	return
 }
 
 func newEdge(from, to *vertex) *edge {
