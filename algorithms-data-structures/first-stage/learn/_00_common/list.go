@@ -1,4 +1,4 @@
-package common
+package _00_common
 
 import (
 	"errors"
