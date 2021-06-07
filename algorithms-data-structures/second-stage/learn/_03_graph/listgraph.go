@@ -23,7 +23,12 @@ func (l *ListGraph) AddVertex(v int) {
 }
 
 func (l *ListGraph) RemoveVertex(v int) {
-
+	vertex, ok := l.vertices[v]
+	if ok {
+		delete(l.vertices, v)
+	} else {
+		println(vertex)
+	}
 }
 
 func (l *ListGraph) AddEdge(from, to int) {
@@ -52,6 +57,6 @@ func (l *ListGraph) AddEdgeWithWeight(from, to int, weight *int) {
 
 }
 
-func (l *ListGraph) RemoveEdge(fromV, toV int) {
+func (l *ListGraph) RemoveEdge(from, to int) {
 
 }

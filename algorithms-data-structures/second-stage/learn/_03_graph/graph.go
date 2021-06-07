@@ -7,7 +7,7 @@ type Graph interface {
 	RemoveVertex(v int)
 	AddEdge(from, to int)
 	AddEdgeWithWeight(from, to int, weight *int)
-	RemoveEdge(fromV, toV int)
+	RemoveEdge(from, to int)
 }
 
 type vertexKey struct {

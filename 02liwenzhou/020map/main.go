@@ -10,6 +10,7 @@ import (
 // map
 
 func main() {
+	deleteInTravel()
 	var m1 map[string]int
 	fmt.Println(m1 == nil)        // 还没有初始化 (没有在内存中开辟空间)
 	m1 = make(map[string]int, 10) // make 初始化 要估算好该map容量,避免在程序运行期间再动态扩容
@@ -75,4 +76,18 @@ func getMapValueBySortedKey() {
 	for _, key := range keys {
 		fmt.Println(key, scoreMap[key])
 	}
+}
+
+func deleteInTravel() {
+	m := make(map[int]int)
+	for i := 0; i < 10; i++ {
+		m[i] = i
+	}
+	fmt.Printf("%#v\n", m)
+	for k := range m {
+		if k == 3 {
+			delete(m, k)
+		}
+	}
+	fmt.Printf("%#v\n", m)
 }
