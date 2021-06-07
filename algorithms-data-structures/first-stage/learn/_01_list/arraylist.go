@@ -1,4 +1,4 @@
-package _00_common
+package _01_list
 
 type ArrayList struct {
 	BaseList

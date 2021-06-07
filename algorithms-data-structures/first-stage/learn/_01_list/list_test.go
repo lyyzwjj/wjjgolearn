@@ -1,4 +1,4 @@
-package _00_common
+package _01_list
 
 import (
 	"fmt"
@@ -23,6 +23,7 @@ func TestList(t *testing.T) {
 	fmt.Println(list.Contains(2))
 	fmt.Println(list.Remove(2))
 	fmt.Println(list.Contains(2))
+	fmt.Println(list.Size())
 	list.Clear()
 	fmt.Printf("%#v\n", list)
 }

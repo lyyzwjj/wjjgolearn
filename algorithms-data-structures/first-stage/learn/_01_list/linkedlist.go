@@ -1,13 +1,17 @@
-package _00_common
+package _01_list
 
 type node struct {
 	element int
-	next    *node
 	prev    *node
+	next    *node
 }
 
 func NewNode(element int, prev, next *node) *node {
-	return &node{element, prev, next}
+	return &node{
+		element: element,
+		prev:    prev,
+		next:    next,
+	}
 }
 
 type LinkedList struct {
@@ -105,7 +109,7 @@ func (l *LinkedList) node(index int) (node *node) {
 		}
 	} else {
 		node := l.last
-		for i := 0; i < index; i++ {
+		for i := l.size - 1; i > index; i-- {
 			node = node.prev
 		}
 	}

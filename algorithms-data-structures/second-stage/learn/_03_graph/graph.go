@@ -9,10 +9,14 @@ type Graph interface {
 	AddEdgeWithWeight(fromV, toV, weight int)
 	RemoveEdge(fromV, toV int)
 }
+
+type vertex struct {
+	value int
+}
+
 type edge struct {
 	value int
 }
-type vertex struct {
-}
+
 type AbstractGraph struct {
 }
