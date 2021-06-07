@@ -1,4 +1,4 @@
-package common
+package _00_common
 
 import (
 	"errors"
@@ -24,49 +24,76 @@ const (
 	defaultCapacity = 10
 )
 
-type AbstractList struct {
-	size         int
-	AddWithIndex func(index int, element int)
-	Remove       func(index int) (int, bool)
-	Clear        func()
-	Get          func(index int) *int
-	Set          func(index int, element int) (int, bool)
-	IndexOf      func(element int) *int
+type List interface {
+	Add(element int)
+	AddWithIndex(index int, element int)
+	Remove(index int) int
+	RemoveElement(element int) int
+	Clear()
+	Size() int
+	IsEmpty() bool
+	Contains(element int) bool
+	Get(index int) int
+	Set(index, element int)
+	IndexOf(element int) int
 }
 
-func (al *AbstractList) Add(element int) {
+type BaseList struct {
+	size         int
+	AddWithIndex func(index, element int)
+	Remove       func(index int) *int
+	IndexOf      func(element int) int
+}
+
+func (al *BaseList) Add(element int) {
 	al.AddWithIndex(al.size, element)
 }
 
-func (al *AbstractList) Size() int {
+func (al *BaseList) Size() int {
 	return al.size
 }
 
-func (al *AbstractList) IsEmpty() bool {
+func (al *BaseList) IsEmpty() bool {
 	return al.size == 0
 }
-func (al *AbstractList) Contains(element int) bool {
-	return al.IndexOf(element) != nil
+func (al *BaseList) Contains(element int) bool {
+	return al.IndexOf(element) != -1
 }
-func (al *AbstractList) RemoveElement(element int) {
-	al.Remove(*al.IndexOf(element))
+func (al *BaseList) RemoveElement(element int) {
+	al.Remove(al.IndexOf(element))
 }
 
-func (al *AbstractList) rangeCheck(index int) error {
+func (al *BaseList) rangeCheck(index int) {
 	if index < 0 || index >= al.size {
-		return errors.New("Size: " + strconv.Itoa(al.size) + " Index: " + strconv.Itoa(index))
+		al.outOfBound(index)
 	}
+}
+func (al *BaseList) rangeCheckForAdd(index int) {
+	if index < 0 || index > al.size {
+		al.outOfBound(index)
+	}
+}
+func (al *BaseList) outOfBound(index int) {
+	panic(errors.New("Size: " + strconv.Itoa(al.size) + " Index: " + strconv.Itoa(index)))
+}
+
+type LinkedList struct {
+	BaseList
+}
+
+func (ll *LinkedList) Get(index int) *int {
+	ll.rangeCheck(index)
 	return nil
 }
-func (al *AbstractList) rangeCheckForAdd(index int) error {
-	if index < 0 || index > al.size {
-		return errors.New("Size: " + strconv.Itoa(al.size) + " Index: " + strconv.Itoa(index))
-	}
-	return nil
+func (ll *LinkedList) Set(index, element int) {
+	ll.rangeCheck(index)
+}
+func (arrayList *LinkedList) IndexOf(element int) int {
+	return -1
 }
 
 type ArrayList struct {
-	AbstractList
+	BaseList
 	elements []interface{}
 }
 
@@ -74,12 +101,9 @@ func NewArrayListWithCapacity(capacity int) *ArrayList {
 	arrayList := new(ArrayList)
 	arrayList.elements = make([]interface{}, capacity)
 	// println("size: " + strconv.Itoa(len(arrayList.elements)) + "capacity: " + strconv.Itoa(cap(arrayList.elements)))
-	arrayList.AbstractList.AddWithIndex = arrayList.AddWithIndex
-	arrayList.AbstractList.Remove = arrayList.Remove
-	arrayList.AbstractList.Clear = arrayList.Clear
-	arrayList.AbstractList.Get = arrayList.Get
-	arrayList.AbstractList.Set = arrayList.Set
-	arrayList.AbstractList.IndexOf = arrayList.IndexOf
+	arrayList.BaseList.AddWithIndex = arrayList.AddWithIndex
+	arrayList.BaseList.Remove = arrayList.Remove
+	arrayList.BaseList.IndexOf = arrayList.IndexOf
 	return arrayList
 }
 func NewArrayList() *ArrayList {

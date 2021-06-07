@@ -25,4 +25,5 @@ require (
 	go.etcd.io/etcd/client/v3 v3.5.0-alpha.0
 	golang.org/x/crypto v0.0.0-20210513122933-cd7d49e622d5 // indirect
 	golang.org/x/sys v0.0.0-20210511113859-b0526f3d8744 // indirect
+	google.golang.org/grpc v1.38.0 // indirect
 )
