@@ -1,12 +1,12 @@
-package _02_set
+package set
 
 type HashSet struct {
-	hashmap map[int]interface{}
+	hashmap map[interface{}]interface{}
 }
 
 func NewHashSet() *HashSet {
 	hashSet := &HashSet{
-		hashmap: make(map[int]interface{}),
+		hashmap: make(map[interface{}]interface{}),
 	}
 	return hashSet
 }
@@ -20,18 +20,18 @@ func (h *HashSet) IsEmpty() bool {
 }
 
 func (h *HashSet) Clear() {
-	h.hashmap = make(map[int]interface{})
+	h.hashmap = make(map[interface{}]interface{})
 }
 
-func (h *HashSet) Contains(element int) (ok bool) {
+func (h *HashSet) Contains(element interface{}) (ok bool) {
 	_, ok = h.hashmap[element]
 	return
 }
 
-func (h *HashSet) Add(element int) {
+func (h *HashSet) Add(element interface{}) {
 	h.hashmap[element] = nil
 }
 
-func (h *HashSet) Remove(element int) {
+func (h *HashSet) Remove(element interface{}) {
 	delete(h.hashmap, element)
 }

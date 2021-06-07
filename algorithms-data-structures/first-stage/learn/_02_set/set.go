@@ -1,10 +1,10 @@
-package _02_set
+package set
 
 type Set interface {
 	Size() int
 	IsEmpty() bool
 	Clear()
-	Contains(element int) bool
-	Add(element int)
-	Remove(element int)
+	Contains(element interface{}) bool
+	Add(element interface{})
+	Remove(element interface{})
 }

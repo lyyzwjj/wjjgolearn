@@ -1,4 +1,4 @@
-package _01_list
+package list
 
 import (
 	"errors"

@@ -1,4 +1,4 @@
-package _02_set
+package set
 
 import (
 	"fmt"
