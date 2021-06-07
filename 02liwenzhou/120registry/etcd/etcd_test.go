@@ -37,11 +37,11 @@ func TestRegister(t *testing.T) {
 	registryInst.Register(context.TODO(), service)
 	//go func() {
 	//	time.Sleep(time.Second * 10)
-	//	service.Nodes = append(service.Nodes, &registry.Node{
+	//	service.Nodes = append(service.Nodes, &registry.node{
 	//		IP:   "127.0.0.3",
 	//		Port: 8801,
 	//	},
-	//		&registry.Node{
+	//		&registry.node{
 	//			IP:   "127.0.0.4",
 	//			Port: 8801,
 	//		},

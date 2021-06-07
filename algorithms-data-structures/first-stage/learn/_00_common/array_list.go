@@ -10,8 +10,9 @@ func (a *ArrayList) Get(index int) int {
 	return -1
 }
 
-func (a *ArrayList) Set(index int, element int) {
+func (a *ArrayList) Set(index int, element int) int {
 	a.rangeCheck(index)
+	return 1
 }
 
 func (a *ArrayList) IndexOf(element int) int {

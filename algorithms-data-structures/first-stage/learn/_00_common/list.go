@@ -21,6 +21,7 @@ import (
 
 const (
 	defaultCapacity = 10
+	elementNotFound = -1
 )
 
 type List interface {
@@ -33,10 +34,9 @@ type List interface {
 	IsEmpty() bool
 	Contains(element int) bool
 	Get(index int) int
-	Set(index, element int)
+	Set(index, element int) int
 	IndexOf(element int) int
 }
-
 type BaseList struct {
 	size         int
 	AddWithIndex func(index, element int)
