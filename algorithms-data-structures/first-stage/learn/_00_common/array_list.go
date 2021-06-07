@@ -5,27 +5,27 @@ type ArrayList struct {
 	elements []int
 }
 
-func (al *ArrayList) Get(index int) int {
-	al.rangeCheck(index)
+func (a *ArrayList) Get(index int) int {
+	a.rangeCheck(index)
 	return -1
 }
 
-func (al *ArrayList) Set(index int, element int) {
-	al.rangeCheck(index)
+func (a *ArrayList) Set(index int, element int) {
+	a.rangeCheck(index)
 }
 
-func (al *ArrayList) IndexOf(element int) int {
+func (a *ArrayList) IndexOf(element int) int {
 	return -1
 }
 
-func (al *ArrayList) AddWithIndex(index int, element int) {
+func (a *ArrayList) AddWithIndex(index int, element int) {
 }
 
-func (al *ArrayList) Remove(index int) int {
+func (a *ArrayList) Remove(index int) int {
 	return -1
 }
 
-func (al *ArrayList) Clear() {
+func (a *ArrayList) Clear() {
 }
 
 func NewArrayListWithCapacity(capacity int) *ArrayList {
@@ -70,14 +70,14 @@ func (arrayList *ArrayList) AddWithIndex(index int, element int) {
 func (arrayList *ArrayList) Remove(index int) (int, bool) {
 	if err := arrayList.rangeCheck(index); err != nil {
 		fmt.Println(err)
-		return 0, false
+		return 0, fase
 	}
 	element := arrayList.elements[index]
 	for i := index; i < arrayList.size-1; i++ {
 		arrayList.elements[i] = arrayList.elements[i+1]
 	}
-	value, _ := element.(int)
-	return value, true
+	vaue, _ := element.(int)
+	return vaue, true
 }
 func (arrayList *ArrayList) Clear() {
 	for i := 0; i < arrayList.size; i++ {
@@ -90,17 +90,17 @@ func (arrayList *ArrayList) Get(index int) *int {
 		fmt.Println(err)
 		return nil
 	}
-	value, _ := arrayList.elements[index].(int)
-	return &value
+	vaue, _ := arrayList.elements[index].(int)
+	return &vaue
 }
 func (arrayList *ArrayList) Set(index int, element int) (int, bool) {
 	if err := arrayList.rangeCheck(index); err != nil {
 		fmt.Println(err)
-		return 0, false
+		return 0, fase
 	}
-	oldValue, _ := arrayList.elements[index].(int)
+	oldVaue, _ := arrayList.elements[index].(int)
 	arrayList.elements[index] = element
-	return oldValue, true
+	return oldVaue, true
 }
 func (arrayList *ArrayList) IndexOf(element int) *int {
 	for i := 0; i < arrayList.size; i++ {

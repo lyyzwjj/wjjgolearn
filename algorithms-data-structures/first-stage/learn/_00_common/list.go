@@ -44,39 +44,39 @@ type BaseList struct {
 	IndexOf      func(element int) int
 }
 
-func (al *BaseList) Add(element int) {
-	al.AddWithIndex(al.size, element)
+func (b *BaseList) Add(element int) {
+	b.AddWithIndex(b.size, element)
 }
 
-func (al *BaseList) Size() int {
-	return al.size
+func (b *BaseList) Size() int {
+	return b.size
 }
 
-func (al *BaseList) IsEmpty() bool {
-	return al.size == 0
+func (b *BaseList) IsEmpty() bool {
+	return b.size == 0
 }
 
-func (al *BaseList) Contains(element int) bool {
-	return al.IndexOf(element) != -1
+func (b *BaseList) Contains(element int) bool {
+	return b.IndexOf(element) != -1
 }
 
-func (al *BaseList) RemoveElement(element int) int {
-	al.Remove(al.IndexOf(element))
+func (b *BaseList) RemoveElement(element int) int {
+	b.Remove(b.IndexOf(element))
 	return -1
 }
 
-func (al *BaseList) rangeCheck(index int) {
-	if index < 0 || index >= al.size {
-		al.outOfBound(index)
+func (b *BaseList) rangeCheck(index int) {
+	if index < 0 || index >= b.size {
+		b.outOfBound(index)
 	}
 }
 
-func (al *BaseList) rangeCheckForAdd(index int) {
-	if index < 0 || index > al.size {
-		al.outOfBound(index)
+func (b *BaseList) rangeCheckForAdd(index int) {
+	if index < 0 || index > b.size {
+		b.outOfBound(index)
 	}
 }
 
-func (al *BaseList) outOfBound(index int) {
-	panic(errors.New("Size: " + strconv.Itoa(al.size) + " Index: " + strconv.Itoa(index)))
+func (b *BaseList) outOfBound(index int) {
+	panic(errors.New("Size: " + strconv.Itoa(b.size) + " Index: " + strconv.Itoa(index)))
 }
