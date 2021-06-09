@@ -16,7 +16,24 @@ type Person struct {
 	Age  int    `json:"age"`
 }
 
+type myfloat32 float32
+
 func main() {
+	i := myfloat32(3.88)
+	marshal, err2 := json.Marshal(i)
+	if err2 != nil {
+		fmt.Printf("marshal failed, err:%v", err2)
+		return
+	}
+	println(marshal)
+	var i2 myfloat32
+	err2 = json.Unmarshal([]byte(marshal), &i2) // 传指针是为了能在json.Unmarshal内部修改p2的值
+	if err2 != nil {
+		fmt.Printf("unmarshal failed, err:%v", err2)
+		return
+	}
+	fmt.Printf("%#v\n", i2)
+
 	p1 := Person{"周林", 26}
 	// 序列化
 	b, err := json.Marshal(p1)
