@@ -17,4 +17,17 @@ func main() {
 	var p Person
 	json.Unmarshal([]byte(str), &p)
 	fmt.Println(p.Name, p.Age)
+	// var m interface{}
+	//m = make(map[interface{}]interface{})
+	m := make(map[interface{}]interface{})
+	m["name"] = "周林"
+	m["age"] = 26
+	var i interface{}
+	i = m
+	marshal, err := json.Marshal(i)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(marshal)
 }

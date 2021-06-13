@@ -25,26 +25,27 @@ const (
 )
 
 type List interface {
-	Add(element int)
-	AddWithIndex(index int, element int)
-	Remove(index int) int
-	RemoveElement(element int) int
+	Add(element interface{})
+	AddWithIndex(index int, element interface{})
+	Remove(index int) (element interface{})
+	RemoveElement(element interface{}) int
 	Clear()
 	Size() int
 	IsEmpty() bool
-	Contains(element int) bool
-	Get(index int) int
-	Set(index, element int) int
-	IndexOf(element int) int
+	Contains(element interface{}) bool
+	Get(index int) (element interface{})
+	// GetObj(index int, obj interface{})
+	Set(index int, element interface{}) (oldElement interface{})
+	IndexOf(element interface{}) int
 }
 type BaseList struct {
 	size         int
-	AddWithIndex func(index, element int)
-	Remove       func(index int) int
-	IndexOf      func(element int) int
+	AddWithIndex func(index int, element interface{})
+	Remove       func(index int) (element interface{})
+	IndexOf      func(element interface{}) int
 }
 
-func (b *BaseList) Add(element int) {
+func (b *BaseList) Add(element interface{}) {
 	b.AddWithIndex(b.size, element)
 }
 
@@ -56,11 +57,11 @@ func (b *BaseList) IsEmpty() bool {
 	return b.size == 0
 }
 
-func (b *BaseList) Contains(element int) bool {
+func (b *BaseList) Contains(element interface{}) bool {
 	return b.IndexOf(element) != -1
 }
 
-func (b *BaseList) RemoveElement(element int) int {
+func (b *BaseList) RemoveElement(element interface{}) int {
 	b.Remove(b.IndexOf(element))
 	return -1
 }

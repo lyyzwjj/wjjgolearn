@@ -1,6 +1,6 @@
 package list
 
-type ArrayList struct {
+/*type ArrayList struct {
 	BaseList
 	elements []int
 }
@@ -40,7 +40,7 @@ func NewArrayListWithCapacity(capacity int) *ArrayList {
 }
 func NewArrayList() *ArrayList {
 	return NewArrayListWithCapacity(defaultCapacity)
-}
+}*/
 
 /*
 func (arrayList *ArrayList) ensureCapacity(capacity int) {

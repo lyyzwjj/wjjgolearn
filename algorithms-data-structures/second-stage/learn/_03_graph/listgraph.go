@@ -1,16 +1,22 @@
 package graph
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+	list "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
+	queue "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_04_queue"
+	stack "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_05_queue"
+)
 
 type ListGraph struct {
-	vertices map[int]*vertex
+	vertices map[interface{}]*vertex
 	edges    map[edgeKey]interface{}
 	edgesMap map[edgeKey]*edge
 }
 
-func NewListGraph() *ListGraph {
+func NewListGraph() Graph {
 	listGraph := &ListGraph{
-		vertices: make(map[int]*vertex),
+		vertices: make(map[interface{}]*vertex),
 		edges:    make(map[edgeKey]interface{}),
 		edgesMap: make(map[edgeKey]*edge),
 	}
@@ -25,39 +31,41 @@ func (l *ListGraph) EdgesSize() int {
 	return len(l.edges)
 }
 
-func (l *ListGraph) AddVertex(v int) {
+func (l *ListGraph) AddVertex(v interface{}) {
 	_, ok := l.vertices[v]
 	if !ok {
 		l.vertices[v] = newVertex(v)
 	}
 }
 
-func (l *ListGraph) RemoveVertex(v int) {
+func (l *ListGraph) RemoveVertex(v interface{}) {
 	vertex, ok := l.vertices[v]
 	if ok {
 		delete(l.vertices, v)
-		for edgeKey := range vertex.outEdges {
+		for edge := range vertex.outEdges {
+			edgeKey := edge.GetEdgeKey()
 			edge := l.edgesMap[edgeKey]
-			delete(edge.to.inEdges, edgeKey)
 			delete(l.edges, edgeKey)
 			delete(l.edgesMap, edgeKey)
+			delete(edge.to.inEdges, edge)
 		}
-		for edgeKey := range vertex.inEdges {
+		for edge := range vertex.inEdges {
+			edgeKey := edge.GetEdgeKey()
 			edge := l.edgesMap[edgeKey]
 			delete(l.edges, edgeKey)
-			delete(edge.from.outEdges, edgeKey)
 			delete(l.edgesMap, edgeKey)
+			delete(edge.from.outEdges, edge)
 		}
 	} else {
 		println(vertex)
 	}
 }
 
-func (l *ListGraph) AddEdge(from, to int) {
+func (l *ListGraph) AddEdge(from, to interface{}) {
 	l.AddEdgeWithWeight(from, to, nil)
 }
 
-func (l *ListGraph) AddEdgeWithWeight(from, to int, weight *int) {
+func (l *ListGraph) AddEdgeWithWeight(from, to interface{}, weight Weight) {
 	fromVertex, ok := l.vertices[from]
 	if !ok {
 		fromVertex = newVertex(from)
@@ -74,8 +82,8 @@ func (l *ListGraph) AddEdgeWithWeight(from, to int, weight *int) {
 	edgeKey := edge.GetEdgeKey()
 	l.edgesMap[edgeKey] = edge
 	l.edges[edgeKey] = edge
-	fromVertex.outEdges[edgeKey] = nil
-	toVertex.inEdges[edgeKey] = nil
+	fromVertex.outEdges[edge] = nil
+	toVertex.inEdges[edge] = nil
 
 	//delete(l.edgesMap, edgeKey)
 	//delete(fromVertex.outEdges, edgeKey)
@@ -83,7 +91,7 @@ func (l *ListGraph) AddEdgeWithWeight(from, to int, weight *int) {
 
 }
 
-func (l *ListGraph) RemoveEdge(from, to int) {
+func (l *ListGraph) RemoveEdge(from, to interface{}) {
 	fromVertex, ok := l.vertices[from]
 	if !ok {
 		return
@@ -92,13 +100,90 @@ func (l *ListGraph) RemoveEdge(from, to int) {
 	if !ok {
 		return
 	}
-	edge := newEdge(fromVertex, toVertex)
-	edgeKey := edge.GetEdgeKey()
-	delete(fromVertex.outEdges, edgeKey)
-	delete(toVertex.inEdges, edgeKey)
+	// edge := newEdge(fromVertex, toVertex)
+	// edgeKey := edge.GetEdgeKey()
+	edgeKey := NewEdgeKey(from, to)
+	edge, ok := l.edgesMap[edgeKey]
+	if !ok {
+		return
+	}
+	delete(fromVertex.outEdges, edge)
+	delete(toVertex.inEdges, edge)
 	delete(l.edgesMap, edgeKey)
 }
 
+func (l *ListGraph) breadthFirstSearch(v interface{}) {
+	beginVertex, ok := l.vertices[v]
+	if !ok {
+		return
+	}
+	visitedVertices := make(map[*vertex]interface{})
+	baseQueue := NewVertexBaseQueue()
+	baseQueue.EnQueue(beginVertex)
+	visitedVertices[beginVertex] = nil
+	for !baseQueue.IsEmpty() {
+		vertex := baseQueue.DeQueueVertex()
+		fmt.Println(vertex.value)
+		for edge := range vertex.outEdges {
+			_, ok := visitedVertices[edge.to]
+			if !ok {
+				baseQueue.EnQueue(edge.to)
+				visitedVertices[edge.to] = nil
+			}
+		}
+	}
+}
+func (l *ListGraph) depthFirstSearch(v interface{}) {
+	beginVertex, ok := l.vertices[v]
+	if !ok {
+		return
+	}
+	visitedVertices := make(map[*vertex]interface{})
+	baseStack := NewVertexBaseStack()
+	baseStack.Push(beginVertex)
+	visitedVertices[beginVertex] = nil
+	fmt.Println(beginVertex.value)
+	for !baseStack.IsEmpty() {
+		vertex := baseStack.PopVertex()
+		for edge := range vertex.outEdges {
+			_, ok := visitedVertices[edge.to]
+			if !ok {
+				baseStack.Push(edge.from)
+				baseStack.Push(edge.to)
+				visitedVertices[edge.to] = nil
+				fmt.Println(edge.to.value)
+			}
+		}
+	}
+}
+func (l *ListGraph) topologicalSort() []interface{} {
+	var valueList []interface{}
+	// 入度为0的vertex容器
+	baseQueue := NewVertexBaseQueue()
+	// 入度不为0的连带着入度存入一个map中
+	ins := make(map[*vertex]int)
+	for _, vertex := range l.vertices {
+		in := len(vertex.inEdges)
+		if in == 0 {
+			baseQueue.EnQueue(vertex)
+		} else {
+			ins[vertex] = in
+		}
+	}
+	for !baseQueue.IsEmpty() {
+		queueVertex := baseQueue.DeQueueVertex()
+		valueList = append(valueList, queueVertex.value)
+		for edge := range queueVertex.outEdges {
+			toIn := ins[edge.to] - 1
+			if toIn == 0 {
+				baseQueue.EnQueue(edge.to)
+			} else {
+				ins[edge.to] = toIn
+			}
+		}
+	}
+	return valueList
+}
 func (l *ListGraph) Print() {
 	fmt.Println("vertices==================================================")
 	for v, vertex := range l.vertices {
@@ -114,11 +199,10 @@ func (l *ListGraph) Print() {
 	}
 }
 
-func (l *ListGraph) PrintEdges(edges map[edgeKey]interface{}) string {
+func (l *ListGraph) PrintEdges(edges map[*edge]interface{}) string {
 	str := "["
 	if len(edges) > 0 {
-		for edgeKey := range edges {
-			edge := l.edgesMap[edgeKey]
+		for edge := range edges {
 			str = str + edge.ToString() + ","
 		}
 		if str[len(str)-1:] == "," {
@@ -127,4 +211,48 @@ func (l *ListGraph) PrintEdges(edges map[edgeKey]interface{}) string {
 	}
 	str = str + "]"
 	return str
+}
+
+type VertexBaseQueue struct {
+	queue.BaseQueue
+}
+
+func NewVertexBaseQueue() *VertexBaseQueue {
+	return &VertexBaseQueue{
+		BaseQueue: queue.BaseQueue{
+			LinkedList: list.NewLinkedList(),
+		},
+	}
+}
+
+var queueValueErr = errors.New("queue value type must be graph.vertex")
+
+func (v *VertexBaseQueue) DeQueueVertex() *vertex {
+	vertex, ok := v.DeQueue().(*vertex)
+	if !ok {
+		panic(queueValueErr)
+	}
+	return vertex
+}
+
+type VertexBaseStack struct {
+	stack.BaseStack
+}
+
+func NewVertexBaseStack() *VertexBaseStack {
+	return &VertexBaseStack{
+		BaseStack: stack.BaseStack{
+			LinkedList: list.NewLinkedList(),
+		},
+	}
+}
+
+var stackValueErr = errors.New("stack value type must be graph.vertex")
+
+func (v *VertexBaseStack) PopVertex() *vertex {
+	vertex, ok := v.Pop().(*vertex)
+	if !ok {
+		panic(stackValueErr)
+	}
+	return vertex
 }

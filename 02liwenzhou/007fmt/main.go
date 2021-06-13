@@ -20,4 +20,10 @@ func main() {
 	// 加一个# 表示前后添加一个""
 	fmt.Printf("字符串：%#v\n", s)
 	fmt.Printf("字符串 %c", 70) // 该值对应的unicode吗值 F
+	var tmp interface{}
+	tmp = "hahahahaha"
+	// tmp = 1
+	str := fmt.Sprintf("%#v", tmp)
+	fmt.Println(str)
+
 }

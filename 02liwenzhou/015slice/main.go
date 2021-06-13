@@ -51,4 +51,20 @@ func main() {
 
 	// 使用make()函数构造切片
 
+	var BFS_02 = [][]interface{}{
+		{0, 1}, {0, 4},
+		{1, 2},
+		{2, 0}, {2, 4}, {2, 5},
+		{3, 1},
+		{4, 6}, {4, 7},
+		{5, 3}, {5, 7},
+		{6, 2}, {6, 7},
+	}
+
+	for _, data := range BFS_02 {
+		fmt.Println(data)
+		for _, d := range data {
+			fmt.Println(d)
+		}
+	}
 }
