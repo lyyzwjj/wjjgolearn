@@ -38,28 +38,11 @@ type Weight interface {
 	ToString() string
 }
 
-//type WeightManager interface {
-//	compare(w1, w2 interface{}) int
-//	add(w1, w2 interface{}) interface{}
-//	zero() interface{}
-//	ToString(w interface{}) string
-//}
-
-//type vertexKey struct {
-//	value interface{}
-//}
-
 type vertex struct {
 	value    interface{}
 	inEdges  map[*edge]interface{}
 	outEdges map[*edge]interface{}
 }
-
-//func (v *vertex) GetVertexKey() vertexKey {
-//	return vertexKey{
-//		value: v.value,
-//	}
-//}
 
 func newVertex(value interface{}) *vertex {
 	vertex := &vertex{

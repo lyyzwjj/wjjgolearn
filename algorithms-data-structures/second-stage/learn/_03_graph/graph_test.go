@@ -13,7 +13,7 @@ func TestGraphDemo(*testing.T) {
 	graph.RemoveEdge("V0", "V4")
 	graph.Print()
 	fmt.Println("\nRemove Vertex V0")
-	graph.RemoveVertex("V0")
+	graph.RemoveVertex("V2")
 	graph.Print()
 }
 func TestGraphBreadthFirstSearch(*testing.T) {
@@ -77,15 +77,16 @@ func TestShortestPathBellmanFord(*testing.T) {
 	//	fmt.Printf("%v - %v \n", v.(int), path.ToString())
 	//}
 }
-func TestA(*testing.T) {
-	var a1, b1 interface{}
-	a1 = 1
-	b1 = 1
-	fmt.Println(a1 == b1)
-	a1 = "string"
-	b1 = "string"
-	fmt.Println(a1 == b1)
-}
+
+//func TestA(*testing.T) {
+//	var a1, b1 interface{}
+//	a1 = 1
+//	b1 = 1
+//	fmt.Println(a1 == b1)
+//	a1 = "string"
+//	b1 = "string"
+//	fmt.Println(a1 == b1)
+//}
 
 func TestShortestPathFloyd(*testing.T) {
 	graph := directedGraph(SP)
