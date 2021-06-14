@@ -3,6 +3,9 @@ package graph
 import (
 	"errors"
 	"fmt"
+	common "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_common"
+	list "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
+	"strings"
 )
 
 type Graph interface {
@@ -16,6 +19,14 @@ type Graph interface {
 	breadthFirstSearch(v interface{})
 	depthFirstSearch(v interface{})
 	topologicalSort() []interface{}
+	minimumSpanningTree() map[EdgeInfo]interface{}
+	prim() map[EdgeInfo]interface{}
+	kruskal(vertexValueComparator common.Comparator) map[EdgeInfo]interface{}
+	shortestPath(v interface{}) map[interface{}]*PathInfo
+	dijkstra(v interface{}) map[interface{}]*PathInfo
+	bellmanFord(v interface{}) map[interface{}]*PathInfo
+	shortestPathAllVertex(vertexValueComparator common.Comparator) (paths map[interface{}]map[interface{}]*PathInfo)
+	floyd(vertexValueComparator common.Comparator) (paths map[interface{}]map[interface{}]*PathInfo)
 	Print()
 }
 
@@ -26,6 +37,13 @@ type Weight interface {
 	getValue() interface{}
 	ToString() string
 }
+
+//type WeightManager interface {
+//	compare(w1, w2 interface{}) int
+//	add(w1, w2 interface{}) interface{}
+//	zero() interface{}
+//	ToString(w interface{}) string
+//}
 
 //type vertexKey struct {
 //	value interface{}
@@ -82,6 +100,14 @@ func (e *edge) GetEdgeKey() edgeKey {
 	}
 	return edgeKey
 }
+func (e *edge) info() EdgeInfo {
+	edgeInfo := EdgeInfo{
+		from:   e.from.value,
+		to:     e.to.value,
+		weight: e.weight,
+	}
+	return edgeInfo
+}
 func NewEdgeKey(from, to interface{}) edgeKey {
 	edgeKey := edgeKey{
 		from: from,
@@ -89,8 +115,50 @@ func NewEdgeKey(from, to interface{}) edgeKey {
 	}
 	return edgeKey
 }
+
+type EdgeInfo struct {
+	from   interface{}
+	to     interface{}
+	weight Weight
+}
+
+type PathInfo struct {
+	weight    Weight
+	edgeInfos list.List
+}
+
+func NewPathInfo() *PathInfo {
+	return &PathInfo{
+		edgeInfos: list.NewLinkedList(),
+	}
+}
+func NewPathInfoWithWeight(weight Weight) *PathInfo {
+	return &PathInfo{
+		weight:    weight,
+		edgeInfos: list.NewLinkedList(),
+	}
+}
+
+func (p *PathInfo) ToString() (str string) {
+	edgeInfosStr := "["
+	for _, e := range p.edgeInfos.GetAll() {
+		edgeInfo := e.(EdgeInfo)
+		edgeInfosStr += edgeInfo.ToString() + ", "
+	}
+	if strings.HasSuffix(edgeInfosStr, ", ") {
+		edgeInfosStr = edgeInfosStr[0 : len(edgeInfosStr)-2]
+	}
+	edgeInfosStr = edgeInfosStr + "]"
+	str = fmt.Sprintf("PathInfo [weight=%v, edgeInfos=%v]", p.weight.ToString(), edgeInfosStr)
+	return
+}
+
 func (e *edge) ToString() (str string) {
 	str = fmt.Sprintf("Edge {from=%#v, to=%#v, weight=%#v}", e.from.ToString(), e.to.ToString(), e.weight.ToString())
+	return
+}
+func (e *EdgeInfo) ToString() (str string) {
+	str = fmt.Sprintf("EdgeInfo [from=%v, to=%v, weight=%v]", e.from, e.to, e.weight.ToString())
 	return
 }
 
@@ -111,13 +179,17 @@ func (w WeightImpl) getValue() interface{} {
 	return w.Value
 }
 
+func (w WeightImpl) ToString() string {
+	return fmt.Sprintf("%v", w.Value)
+}
+
 func (w WeightImpl) compare(o Weight) (compareResult int) {
 	fw, fwOk := w.getValue().(float64)
 	fo, foOk := o.getValue().(float64)
 	if fwOk && foOk {
-		if fo > fw {
+		if fw > fo {
 			compareResult = 1
-		} else if fo == fw {
+		} else if fw == fo {
 			compareResult = 0
 		} else {
 			compareResult = -1
@@ -129,7 +201,7 @@ func (w WeightImpl) compare(o Weight) (compareResult int) {
 	if iwOk && ioOk {
 		if iw > io {
 			compareResult = 1
-		} else if fo == fw {
+		} else if iw == io {
 			compareResult = 0
 		} else {
 			compareResult = -1
@@ -160,6 +232,7 @@ func (w WeightImpl) add(o Weight) Weight {
 	panic(weightValueErr)
 
 }
+
 func (w WeightImpl) zero() Weight {
 	var Value interface{}
 	Value = nil
@@ -177,7 +250,4 @@ func (w WeightImpl) zero() Weight {
 		}
 	}
 	panic(weightValueErr)
-}
-func (w WeightImpl) ToString() string {
-	return fmt.Sprintf("%v", w.Value)
 }

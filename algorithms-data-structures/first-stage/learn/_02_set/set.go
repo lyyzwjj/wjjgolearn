@@ -7,4 +7,5 @@ type Set interface {
 	Contains(element interface{}) bool
 	Add(element interface{})
 	Remove(element interface{})
+	GetAll() (sets []interface{})
 }

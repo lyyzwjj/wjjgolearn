@@ -26,6 +26,7 @@ const (
 
 type List interface {
 	Add(element interface{})
+	AddAll(elements []interface{})
 	AddWithIndex(index int, element interface{})
 	Remove(index int) (element interface{})
 	RemoveElement(element interface{}) int
@@ -37,6 +38,7 @@ type List interface {
 	// GetObj(index int, obj interface{})
 	Set(index int, element interface{}) (oldElement interface{})
 	IndexOf(element interface{}) int
+	GetAll() (lists []interface{})
 }
 type BaseList struct {
 	size         int
@@ -47,6 +49,12 @@ type BaseList struct {
 
 func (b *BaseList) Add(element interface{}) {
 	b.AddWithIndex(b.size, element)
+}
+
+func (b *BaseList) AddAll(elements []interface{}) {
+	for _, element := range elements {
+		b.Add(element)
+	}
 }
 
 func (b *BaseList) Size() int {

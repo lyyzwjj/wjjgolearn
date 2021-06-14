@@ -4,7 +4,7 @@ type HashSet struct {
 	hashmap map[interface{}]interface{}
 }
 
-func NewHashSet() *HashSet {
+func NewHashSet() Set {
 	hashSet := &HashSet{
 		hashmap: make(map[interface{}]interface{}),
 	}
@@ -34,4 +34,10 @@ func (h *HashSet) Add(element interface{}) {
 
 func (h *HashSet) Remove(element interface{}) {
 	delete(h.hashmap, element)
+}
+func (h *HashSet) GetAll() (sets []interface{}) {
+	for key := range h.hashmap {
+		sets = append(sets, key)
+	}
+	return
 }

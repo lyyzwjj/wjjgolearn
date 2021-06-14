@@ -2,6 +2,7 @@ package graph
 
 import (
 	"fmt"
+	common "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_common"
 	"testing"
 )
 
@@ -25,12 +26,80 @@ func TestGraphDepthFirstSearch(*testing.T) {
 	graph := undirectedGraph(DFS_01)
 	graph.depthFirstSearch(0)
 	graph = directedGraph(DFS_02)
-	graph.breadthFirstSearch("d")
+	graph.depthFirstSearch("d")
 }
 func TestTopologicalSort(*testing.T) {
 	graph := directedGraph(TOPO)
 	list := graph.topologicalSort()
 	fmt.Printf("%#v\n", list)
+}
+func TestMinimumSpanningTreePrim(*testing.T) {
+	graph := undirectedGraph(MST_02)
+	edgeInfos := graph.prim()
+	for edgeInfo := range edgeInfos {
+		fmt.Println(edgeInfo.ToString())
+	}
+}
+func TestMinimumSpanningTreeKruskal(*testing.T) {
+	graph := undirectedGraph(MST_02)
+	edgeInfos := graph.kruskal(common.StringComparator)
+	for edgeInfo := range edgeInfos {
+		fmt.Println(edgeInfo.ToString())
+	}
+}
+func TestShortestPathDijkstra(*testing.T) {
+	// graph := undirectedGraph(SP)
+	// graph := undirectedGraph(NEGATIVE_WEIGHT1)
+	// sp := graph.dijkstra("A")
+	// for v, path := range sp {
+	// 	fmt.Printf("%v - %v \n", v.(string), path.ToString())
+	// }
+	graph := undirectedGraph(NEGATIVE_WEIGHT2)
+	sp := graph.dijkstra(0)
+	for v, path := range sp {
+		fmt.Printf("%v - %v \n", v.(int), path.ToString())
+	}
+
+}
+func TestShortestPathBellmanFord(*testing.T) {
+	graph := undirectedGraph(SP)
+	// graph := undirectedGraph(NEGATIVE_WEIGHT1)
+	sp := graph.dijkstra("A")
+	for v, path := range sp {
+		fmt.Printf("%v - %v \n", v.(string), path.ToString())
+	}
+	//graph := undirectedGraph(NEGATIVE_WEIGHT2)
+	//sp := graph.bellmanFord(0)
+	//for v, path := range sp {
+	//	fmt.Printf("%v - %v \n", v.(int), path.ToString())
+	//}
+}
+func TestA(*testing.T) {
+	var a1, b1 interface{}
+	a1 = 1
+	b1 = 1
+	fmt.Println(a1 == b1)
+	a1 = "string"
+	b1 = "string"
+	fmt.Println(a1 == b1)
+}
+
+func TestShortestPathFloyd(*testing.T) {
+	graph := directedGraph(SP)
+	// graph := directedGraph(NEGATIVE_WEIGHT1)
+	sp := graph.floyd(common.StringComparator)
+	for from, m := range sp {
+		fmt.Println(from.(string) + "------------------------")
+		for to, path := range m {
+			fmt.Printf("%v - %v \n", to.(string), path.ToString())
+		}
+
+	}
+	//graph := directedGraph(NEGATIVE_WEIGHT2)
+	//sp := graph.bellmanFord(0)
+	//for v, path := range sp {
+	//	fmt.Printf("%v - %v \n", v.(int), path.ToString())
+	//}
 }
 
 // undirectedGraph 有向图
@@ -60,8 +129,8 @@ func undirectedGraph(data [][]interface{}) (graph Graph) {
 			graph.AddEdge(edge[0], edge[1])
 			graph.AddEdge(edge[1], edge[0])
 		} else if length == 3 {
-			graph.AddEdgeWithWeight(edge[0], edge[1], NewWeightImpl(edge[1]))
-			graph.AddEdgeWithWeight(edge[1], edge[0], NewWeightImpl(edge[1]))
+			graph.AddEdgeWithWeight(edge[0], edge[1], NewWeightImpl(edge[2]))
+			graph.AddEdgeWithWeight(edge[1], edge[0], NewWeightImpl(edge[2]))
 		}
 	}
 	return

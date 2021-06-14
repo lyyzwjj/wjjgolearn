@@ -103,7 +103,14 @@ func (l *LinkedList) Clear() {
 	l.first = nil
 	l.last = nil
 }
-
+func (l *LinkedList) GetAll() (lists []interface{}) {
+	node := l.first
+	for node != nil {
+		lists = append(lists, node.element)
+		node = node.next
+	}
+	return
+}
 func (l *LinkedList) node(index int) (node *node) {
 	l.rangeCheck(index)
 	if index < l.size>>1 { // 从头遍历
