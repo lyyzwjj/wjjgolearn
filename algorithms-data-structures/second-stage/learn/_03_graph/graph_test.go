@@ -34,15 +34,18 @@ func TestTopologicalSort(*testing.T) {
 	fmt.Printf("%#v\n", list)
 }
 func TestMinimumSpanningTreePrim(*testing.T) {
-	graph := undirectedGraph(MST_02)
+	graph := undirectedGraph(MST_01)
+	// graph := undirectedGraph(MST_02)
 	edgeInfos := graph.prim()
 	for edgeInfo := range edgeInfos {
 		fmt.Println(edgeInfo.ToString())
 	}
 }
 func TestMinimumSpanningTreeKruskal(*testing.T) {
-	graph := undirectedGraph(MST_02)
-	edgeInfos := graph.kruskal(common.StringComparator)
+	graph := undirectedGraph(MST_01)
+	edgeInfos := graph.kruskal(common.IntComparator)
+	// graph := undirectedGraph(MST_02)
+	// edgeInfos := graph.kruskal(common.StringComparator)
 	for edgeInfo := range edgeInfos {
 		fmt.Println(edgeInfo.ToString())
 	}

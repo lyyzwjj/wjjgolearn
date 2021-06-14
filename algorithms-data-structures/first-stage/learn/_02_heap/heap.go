@@ -139,8 +139,8 @@ func (b *BinaryHeap) siftDown(index int) { // 下滤
 		child := b.elements[childIndex]
 		rightIndex := childIndex + 1
 		if rightIndex < b.size && b.comparator(b.elements[rightIndex], child) > 0 {
-			child = b.elements[childIndex]
 			childIndex = rightIndex
+			child = b.elements[childIndex]
 		}
 		if b.comparator(element, child) >= 0 {
 			break

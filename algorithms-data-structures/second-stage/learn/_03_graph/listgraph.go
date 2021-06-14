@@ -196,7 +196,7 @@ func edgeComparator(a, b interface{}) int {
 	ia := a.(*edge)
 	ib := b.(*edge)
 	// fmt.Printf("ia: %v, ib: %v, result: %v\n", ia.weight.ToString(), ib.weight.ToString(), ib.weight.compare(ia.weight))
-	return ia.weight.compare(ib.weight)
+	return ib.weight.compare(ia.weight)
 }
 
 func GetVertexComparator(vertexValueComparator common.Comparator) common.Comparator {
@@ -217,7 +217,6 @@ func (l *ListGraph) prim() map[EdgeInfo]interface{} {
 	var binaryHeap heap.Heap
 	for _, vertex := range l.vertices {
 		addedVertices.Add(vertex.value)
-		fmt.Println(vertex.value)
 		var outEdges []interface{}
 		for edge := range vertex.outEdges {
 			outEdges = append(outEdges, edge)
@@ -227,7 +226,6 @@ func (l *ListGraph) prim() map[EdgeInfo]interface{} {
 	}
 	for binaryHeap != nil && !binaryHeap.IsEmpty() && len(edgeInfos) < edgeSize {
 		edge := binaryHeap.Remove().(*edge)
-		fmt.Println(edge.weight.ToString())
 		if !addedVertices.Contains(edge.to.value) {
 			edgeInfos[edge.info()] = nil
 			addedVertices.Add(edge.to.value)

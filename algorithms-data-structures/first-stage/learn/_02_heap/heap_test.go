@@ -7,7 +7,7 @@ import (
 )
 
 func TestHeap(t *testing.T) {
-	test1()
+	// test1()
 	test2()
 }
 func test2() {
@@ -19,10 +19,14 @@ func test2() {
 	heap.Add(27)
 	heap.Add(33)
 	heap.Add(6)
-	heap.Remove()
-	heap.Remove()
-	heap.Replace(1)
-	fmt.Printf("%#v", heap)
+	for !heap.IsEmpty() {
+		fmt.Printf("%#v", heap)
+		fmt.Println(heap.Remove())
+	}
+	//heap.Remove()
+	//heap.Remove()
+	//heap.Replace(1)
+	//fmt.Printf("%#v", heap)
 }
 
 func test1() {
