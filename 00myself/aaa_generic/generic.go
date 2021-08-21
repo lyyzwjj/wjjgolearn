@@ -241,10 +241,16 @@ func (h hashmap[K, V]) put(k K, v V) {
 func (h hashmap[K, V]) get(k K) (v V) {
 	return h[k]
 }
-
+type Human interface {
+	Speak()
+}
 type Person struct {
 	Id   int
 	Name string
+}
+
+func (p *Person) Speak() {
+	fmt.Println(p.Name)
 }
 
 func (p *Person) showName() {
@@ -270,6 +276,15 @@ func myHashMap() {
 	value3 := h3.get(key3)
 	value3.showName()
 	fmt.Printf("K type: %T, K value: %v V type: %T, V value: %v \n", key3, key3, value3, value3)
+	h4 := make(hashmap[string, Human], 10)
+	key4 := "haha"
+	h4.put(key4, &Person{
+		Id:   1,
+		Name: "张三",
+	})
+	value4 := h4.get(key4)
+	value4.Speak()
+	fmt.Printf("K type: %T, K value: %v V type: %T, V value: %v \n", key4, key4, value4, value4)
 }
 func main() {
 	//normal()
