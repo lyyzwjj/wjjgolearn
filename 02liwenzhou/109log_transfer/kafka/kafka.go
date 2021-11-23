@@ -3,7 +3,7 @@ package kafka
 import (
 	"fmt"
 	"github.com/Shopify/sarama"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/109log_transfer/es"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/109log_transfer/es"
 )
 
 // 初始化kafka消费者 从kafka取数据发往ES

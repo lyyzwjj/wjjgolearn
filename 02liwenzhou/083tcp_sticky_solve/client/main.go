@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/083tcp_sticky_solve/protocol"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/083tcp_sticky_solve/protocol"
 )
 
 // tcp/client/main.go

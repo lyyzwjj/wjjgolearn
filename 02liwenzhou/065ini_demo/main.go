@@ -172,7 +172,7 @@ func main() {
 	var cfg Config
 	// var x = new(int)
 	// err := loadIni("./conf.ini", &x)
-	err := loadIni("/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/065ini_demo/conf.ini", &cfg)
+	err := loadIni("/Users/wjj/go/src/github.com/lyyzwjj/wjjgolearn/02liwenzhou/065ini_demo/conf.ini", &cfg)
 	if err != nil {
 		fmt.Printf("load ini failed,err:%v\n", err)
 	}

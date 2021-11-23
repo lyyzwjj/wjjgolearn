@@ -9,7 +9,7 @@ import (
 // net/http server
 
 func httpHandler1(w http.ResponseWriter, r *http.Request) {
-	b, err := ioutil.ReadFile("/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/085http_server/server/test.html")
+	b, err := ioutil.ReadFile("/Users/wjj/go/src/github.com/lyyzwjj/wjjgolearn/02liwenzhou/085http_server/server/test.html")
 	if err != nil {
 		w.Write([]byte(fmt.Sprintf("%v", err)))
 	}

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/hpcloud/tail"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/kafka"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/105logagent_plus/kafka"
 )
 
 // 专门从日志文件收集之日志的模块

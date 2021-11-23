@@ -3,7 +3,7 @@ package etcd
 import (
 	"context"
 	"fmt"
-	registry "github.com/wzzst310/wjjgolearn/02liwenzhou/120registry"
+	registry "github.com/lyyzwjj/wjjgolearn/02liwenzhou/120registry"
 	"testing"
 	"time"
 )

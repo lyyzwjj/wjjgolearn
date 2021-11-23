@@ -1,4 +1,4 @@
-module github.com/wzzst310/wjjgolearn/02liwenzhou/109log_transfer
+module github.com/lyyzwjj/wjjgolearn/02liwenzhou/109log_transfer
 
 go 1.16
 

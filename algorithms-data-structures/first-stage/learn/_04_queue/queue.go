@@ -1,6 +1,6 @@
 package queue
 
-import list "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
+import list "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
 
 type Queue interface {
 	Size() int

@@ -4,8 +4,8 @@ import "fmt"
 
 // go 本包下 go build
 // -o 指定build后文件名字
-// go build -o hello github.com/wzzst310/wjjgolearn/02liwenzhou/day01/helloworld   一定是src后面的目录到main包下
-// 如果出现了cannot find module providing package github.com/wzzst310/wjjgolearn/02liwenzhou/day01/helloworld: working directory is not part of a module
+// go build -o hello github.com/lyyzwjj/wjjgolearn/02liwenzhou/day01/helloworld   一定是src后面的目录到main包下
+// 如果出现了cannot find module providing package github.com/lyyzwjj/wjjgolearn/02liwenzhou/day01/helloworld: working directory is not part of a module
 // export GO111MODULE=auto 关闭go module
 
 // go run 像执行脚本文件一样执行Go代码

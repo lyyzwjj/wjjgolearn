@@ -2,8 +2,8 @@ package controller
 
 import (
 	"fmt"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/113blog/service"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/113blog/utils"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/113blog/service"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/113blog/utils"
 	"log"
 	"net/http"
 	"path"

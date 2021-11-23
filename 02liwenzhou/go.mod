@@ -1,4 +1,4 @@
-module github.com/wzzst310/wjjgolearn/02liwenzhou
+module github.com/lyyzwjj/wjjgolearn/02liwenzhou
 
 go 1.16
 

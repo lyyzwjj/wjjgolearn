@@ -1,6 +1,6 @@
 package stack
 
-import list "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
+import list "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
 
 type Stack interface {
 	Size() int

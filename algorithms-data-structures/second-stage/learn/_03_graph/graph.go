@@ -3,8 +3,8 @@ package graph
 import (
 	"errors"
 	"fmt"
-	common "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_common"
-	list "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
+	common "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_common"
+	list "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
 	"strings"
 )
 

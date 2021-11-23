@@ -18,7 +18,7 @@ type Login struct {
 	Password string `form:"password" json:"password" uri:"password" xml:"password" binding:"required"`
 }
 
-// 启动命令修改 Working directory /Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/110gin_demo
+// 启动命令修改 Working directory /Users/wjj/go/src/github.com/lyyzwjj/wjjgolearn/02liwenzhou/110gin_demo
 func main() {
 	fmt.Println(8 << 20)
 	// 1. 创建路由
@@ -400,7 +400,7 @@ func uploadFiles(r *gin.Engine) {
 		// 获取所有文件
 		files := form.File["files"]
 		// 遍历所有图片
-		dir := "/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/110gin_demo/"
+		dir := "/Users/wjj/go/src/github.com/lyyzwjj/wjjgolearn/02liwenzhou/110gin_demo/"
 		for _, file := range files {
 			// 逐个存
 			if err := c.SaveUploadedFile(file, dir+file.Filename); err != nil {
@@ -416,7 +416,7 @@ func uploadFile(r *gin.Engine) {
 		// 表单取文件
 		file, _ := c.FormFile("file")
 		log.Println(file.Filename)
-		dir := "/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/110gin_demo/"
+		dir := "/Users/wjj/go/src/github.com/lyyzwjj/wjjgolearn/02liwenzhou/110gin_demo/"
 		// 传到项目根目录, 名字就用本身的
 		_ = c.SaveUploadedFile(file, dir+file.Filename)
 		// 打印信息

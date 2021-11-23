@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/conf"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/etcd"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/kafka"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/taillog"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/utils"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/105logagent_plus/conf"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/105logagent_plus/etcd"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/105logagent_plus/kafka"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/105logagent_plus/taillog"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/105logagent_plus/utils"
 	"gopkg.in/ini.v1"
 	"sync"
 	"time"

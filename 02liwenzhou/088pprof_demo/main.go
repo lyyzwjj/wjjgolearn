@@ -80,7 +80,7 @@ Dropped 10 nodes (cum <= 0.57s)
      9.09s  8.01% 99.95%      9.12s  8.03%  runtime.newstack
 (pprof) list logicCode
 Total: 1.89mins
-ROUTINE ======================== main.logicCode in /Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/088pprof_demo/main.go
+ROUTINE ======================== main.logicCode in /Users/wjj/go/src/github.com/lyyzwjj/wjjgolearn/02liwenzhou/088pprof_demo/main.go
     24.84s   1.89mins (flat, cum)   100% of Total
          .          .      8:   "runtime/pprof"
          .          .      9:   "time"

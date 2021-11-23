@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/DeanThompson/ginpprof"
 	"github.com/gin-gonic/gin"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/113blog/controller"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/113blog/dao/db"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/113blog/controller"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/113blog/dao/db"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 		panic(err)
 	}
 	ginpprof.Wrapper(router)
-	// router.StaticFS("/static", http.Dir("/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/113blog/static"))
+	// router.StaticFS("/static", http.Dir("/Users/wjj/go/src/github.com/lyyzwjj/wjjgolearn/02liwenzhou/113blog/static"))
 	router.Static("/static/", "./static")
 	router.LoadHTMLGlob("views/*")
 	router.GET("/", controller.IndexHandle)

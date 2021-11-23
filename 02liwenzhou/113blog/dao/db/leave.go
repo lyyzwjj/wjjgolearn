@@ -2,7 +2,7 @@ package db
 
 import (
 	"fmt"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/113blog/model"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/113blog/model"
 
 	_ "github.com/go-sql-driver/mysql"
 )

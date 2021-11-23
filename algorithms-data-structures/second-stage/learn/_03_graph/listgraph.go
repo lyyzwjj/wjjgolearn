@@ -3,13 +3,13 @@ package graph
 import (
 	"errors"
 	"fmt"
-	common "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_common"
-	list "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
-	heap "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_02_heap"
-	set "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_02_set"
-	queue "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_04_queue"
-	stack "github.com/wzzst310/wjjgolearn/algorithms-data-structures/first-stage/learn/_05_stack"
-	union "github.com/wzzst310/wjjgolearn/algorithms-data-structures/second-stage/learn/_02_union"
+	common "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_common"
+	list "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
+	heap "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_02_heap"
+	set "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_02_set"
+	queue "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_04_queue"
+	stack "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_05_stack"
+	union "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/second-stage/learn/_02_union"
 )
 
 type ListGraph struct {
