@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/109log_transfer/conf"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/109log_transfer/es"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/109log_transfer/kafka"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/109log_transfer/conf"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/109log_transfer/es"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/109log_transfer/kafka"
 	"gopkg.in/ini.v1"
 )
 

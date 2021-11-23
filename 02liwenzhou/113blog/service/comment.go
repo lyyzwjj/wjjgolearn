@@ -2,8 +2,8 @@ package service
 
 import (
 	"fmt"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/113blog/dao/db"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/113blog/model"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/113blog/dao/db"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/113blog/model"
 	"time"
 )
 

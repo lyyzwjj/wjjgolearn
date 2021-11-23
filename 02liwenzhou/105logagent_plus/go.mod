@@ -1,4 +1,4 @@
-module github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus
+module github.com/lyyzwjj/wjjgolearn/02liwenzhou/105logagent_plus
 
 go 1.16
 

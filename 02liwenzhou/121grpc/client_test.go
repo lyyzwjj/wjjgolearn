@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	pb "github.com/wzzst310/wjjgolearn/02liwenzhou/121grpc/proto"
+	pb "github.com/lyyzwjj/wjjgolearn/02liwenzhou/121grpc/proto"
 	"google.golang.org/grpc"
 	"testing"
 )

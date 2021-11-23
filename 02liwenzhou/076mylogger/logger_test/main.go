@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/076mylogger/mylogger"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/076mylogger/mylogger"
 )
 
 var log mylogger.Logger // 声明一个全局的全局变量
@@ -9,7 +9,7 @@ var log mylogger.Logger // 声明一个全局的全局变量
 // 测试我们自己写的日志库
 func main() {
 	// log = mylogger.NewConsoleLogger("INFO")                         //  终端日志实例
-	log = mylogger.NewFileLogger("INFO", "/Users/wjj/go/src/github.com/wzzst310/wjjgolearn/02liwenzhou/076mylogger/logger_test/", "customer", 10*1024) //  文件日志实例
+	log = mylogger.NewFileLogger("INFO", "/Users/wjj/go/src/github.com/lyyzwjj/wjjgolearn/02liwenzhou/076mylogger/logger_test/", "customer", 10*1024) //  文件日志实例
 	// log = mylogger.NewLogger("f")                                   //根据入参返回不同的Logger
 	for i := 0; i < 5; i++ {
 		go func() {

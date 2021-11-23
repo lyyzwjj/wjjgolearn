@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	registry "github.com/wzzst310/wjjgolearn/02liwenzhou/120registry"
+	registry "github.com/lyyzwjj/wjjgolearn/02liwenzhou/120registry"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"path"
 	"sync"

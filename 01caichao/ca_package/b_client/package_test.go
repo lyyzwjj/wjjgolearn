@@ -1,7 +1,7 @@
 package b_client
 
 import (
-	"github.com/wzzst310/wjjgolearn/01caichao/ca_package/a_series"
+	"github.com/lyyzwjj/wjjgolearn/01caichao/ca_package/a_series"
 	"testing"
 )
 

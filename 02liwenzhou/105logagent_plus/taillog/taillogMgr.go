@@ -2,7 +2,7 @@ package taillog
 
 import (
 	"fmt"
-	"github.com/wzzst310/wjjgolearn/02liwenzhou/105logagent_plus/etcd"
+	"github.com/lyyzwjj/wjjgolearn/02liwenzhou/105logagent_plus/etcd"
 	"time"
 )
 
