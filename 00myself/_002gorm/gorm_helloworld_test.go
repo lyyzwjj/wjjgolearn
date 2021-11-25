@@ -1,7 +1,6 @@
-package _02gorm
+package _002gorm
 
 import (
-	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"testing"
 )
@@ -19,17 +18,14 @@ type Product struct {
 //}
 
 func TestGorm(t *testing.T) {
-	dsn := "root:Wzzst310@163.com@tcp(wjjzst.com:3306)/gorm?charset=utf8&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil {
-		panic("failed to connect database")
-	}
+	Init()
 
 	// 迁移 schema
 	db.AutoMigrate(&Product{})
 
 	// Create
-	db.Create(&Product{Code: "D42", Price: 100})
+	db.Create(&Product{Code: "D42",
+		Price: 100})
 
 	// Read
 	var product Product
