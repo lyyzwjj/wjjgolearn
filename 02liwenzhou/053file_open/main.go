@@ -6,6 +6,8 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"path"
+	"strings"
 )
 
 // 打开文件
@@ -15,6 +17,16 @@ func main() {
 	// readFromFile1()
 	// readFromFileByBufio()
 	readFromFileByIoutil()
+}
+func FileName() {
+	csvFilePath := "resources/raw/大家的日语第二版初级2_26.csv"
+	fileNameAll := path.Base(csvFilePath)
+	fileSuffix := path.Ext(csvFilePath)
+	// fileprefix := filenameall[0:len(filenameall) - len(filesuffix)]
+	filePrefix := strings.TrimSuffix(fileNameAll, fileSuffix)
+	fmt.Println("file name:", fileNameAll)
+	fmt.Println("file prefix:", filePrefix)
+	fmt.Println("file suffix:", fileSuffix)
 }
 
 func readFromFileByIoutil() {

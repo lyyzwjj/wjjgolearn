@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -17,7 +18,8 @@ import (
 // os.O_CREATE 0x200
 func main() {
 	// writeDemo2()
-	writeDemo3()
+	// writeDemo3()
+	replaceDemo()
 }
 
 func writeDemo3() {
@@ -53,4 +55,18 @@ func writeDemo1() {
 	fileObj.Write([]byte("zhoulin mengbi le!\n"))
 	fileObj.WriteString("周林解释不了! ")
 	fileObj.Close()
+}
+func replaceDemo() {
+	input, err := ioutil.ReadFile("test_replace_original.txt")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	output := bytes.Replace(input, []byte("ce"), []byte("ok"), -1)
+
+	if err = ioutil.WriteFile("test_replace.txt", output, 0666); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }
