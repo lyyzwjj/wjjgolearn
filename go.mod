@@ -1,6 +1,6 @@
 module github.com/lyyzwjj/wjjgolearn
 
-go 1.17
+go 1.18
 
 require (
 	github.com/easierway/concurrent_map v1.0.0
