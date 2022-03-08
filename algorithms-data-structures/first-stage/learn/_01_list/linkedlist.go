@@ -1,34 +1,34 @@
 package list
 
-type node struct {
-	element interface{}
-	prev    *node
-	next    *node
+type node[T comparable] struct {
+	element T
+	prev    *node[T]
+	next    *node[T]
 }
 
-func NewNode(element interface{}, prev, next *node) *node {
-	return &node{
+func NewNode[T comparable](element T, prev, next *node[T]) *node[T] {
+	return &node[T]{
 		element: element,
 		prev:    prev,
 		next:    next,
 	}
 }
 
-type LinkedList struct {
-	BaseList
-	first *node
-	last  *node
+type LinkedList[T comparable] struct {
+	BaseList[T]
+	first *node[T]
+	last  *node[T]
 }
 
-func NewLinkedList() *LinkedList {
-	linkedList := &LinkedList{}
+func NewLinkedList[T comparable]() *LinkedList[T] {
+	linkedList := &LinkedList[T]{}
 	linkedList.BaseList.AddWithIndex = linkedList.AddWithIndex
 	linkedList.BaseList.Remove = linkedList.Remove
 	linkedList.BaseList.IndexOf = linkedList.IndexOf
 	return linkedList
 }
 
-func (l *LinkedList) Get(index int) (element interface{}) {
+func (l *LinkedList[T]) Get(index int) (element T) {
 	return l.node(index).element
 }
 
@@ -36,14 +36,14 @@ func (l *LinkedList) Get(index int) (element interface{}) {
 //	obj = l.node(index).element
 //}
 
-func (l *LinkedList) Set(index int, element interface{}) (oldElement interface{}) {
+func (l *LinkedList[T]) Set(index int, element T) (oldElement T) {
 	node := l.node(index)
 	old := node.element
 	node.element = element
 	return old
 }
 
-func (l *LinkedList) IndexOf(element interface{}) int {
+func (l *LinkedList[T]) IndexOf(element T) int {
 	node := l.first
 	for i := 0; i < l.size; i++ {
 		if element == node.element {
@@ -54,11 +54,11 @@ func (l *LinkedList) IndexOf(element interface{}) int {
 	return elementNotFound
 }
 
-func (l *LinkedList) AddWithIndex(index int, element interface{}) {
+func (l *LinkedList[T]) AddWithIndex(index int, element T) {
 	l.rangeCheckForAdd(index)
 	if index == l.size { // 往最后一个元素时
 		oldLast := l.last
-		l.last = NewNode(element, l.last, nil)
+		l.last = NewNode[T](element, l.last, nil)
 		if oldLast == nil { //链表为空时加的第一个元素
 			l.first = l.last
 		} else {
@@ -79,7 +79,7 @@ func (l *LinkedList) AddWithIndex(index int, element interface{}) {
 	l.size++
 }
 
-func (l *LinkedList) Remove(index int) (element interface{}) {
+func (l *LinkedList[T]) Remove(index int) (element T) {
 	l.rangeCheck(index)
 	node := l.node(index)
 	prev := node.prev
@@ -98,12 +98,12 @@ func (l *LinkedList) Remove(index int) (element interface{}) {
 	return node.element
 }
 
-func (l *LinkedList) Clear() {
+func (l *LinkedList[T]) Clear() {
 	l.size = 0
 	l.first = nil
 	l.last = nil
 }
-func (l *LinkedList) GetAll() (lists []interface{}) {
+func (l *LinkedList[T]) GetAll() (lists []T) {
 	node := l.first
 	for node != nil {
 		lists = append(lists, node.element)
@@ -111,7 +111,7 @@ func (l *LinkedList) GetAll() (lists []interface{}) {
 	}
 	return
 }
-func (l *LinkedList) node(index int) (node *node) {
+func (l *LinkedList[T]) node(index int) (node *node[T]) {
 	l.rangeCheck(index)
 	if index < l.size>>1 { // 从头遍历
 		node = l.first

@@ -24,68 +24,67 @@ const (
 	elementNotFound = -1
 )
 
-type List interface {
-	Add(element interface{})
-	AddAll(elements []interface{})
-	AddWithIndex(index int, element interface{})
-	Remove(index int) (element interface{})
-	RemoveElement(element interface{}) int
+type List[T comparable] interface {
+	Add(element T)
+	AddAll(elements []T)
+	AddWithIndex(index int, element T)
+	Remove(index int) (element T)
+	RemoveElement(element T) int
 	Clear()
 	Size() int
 	IsEmpty() bool
-	Contains(element interface{}) bool
-	Get(index int) (element interface{})
-	// GetObj(index int, obj interface{})
-	Set(index int, element interface{}) (oldElement interface{})
-	IndexOf(element interface{}) int
-	GetAll() (lists []interface{})
+	Contains(element T) bool
+	Get(index int) (element T)
+	Set(index int, element T) (oldElement T)
+	IndexOf(element T) int
+	GetAll() (lists []T)
 }
-type BaseList struct {
+type BaseList[T comparable] struct {
 	size         int
-	AddWithIndex func(index int, element interface{})
-	Remove       func(index int) (element interface{})
-	IndexOf      func(element interface{}) int
+	AddWithIndex func(index int, element T)
+	Remove       func(index int) (element T)
+	IndexOf      func(element T) int
 }
 
-func (b *BaseList) Add(element interface{}) {
+func (b *BaseList[T]) Add(element T) {
 	b.AddWithIndex(b.size, element)
 }
 
-func (b *BaseList) AddAll(elements []interface{}) {
+func (b *BaseList[T]) AddAll(elements []T) {
 	for _, element := range elements {
 		b.Add(element)
 	}
 }
 
-func (b *BaseList) Size() int {
+func (b *BaseList[T]) Size() int {
 	return b.size
 }
 
-func (b *BaseList) IsEmpty() bool {
+func (b *BaseList[T]) IsEmpty() bool {
 	return b.size == 0
 }
 
-func (b *BaseList) Contains(element interface{}) bool {
+func (b *BaseList[T]) Contains(element T) bool {
 	return b.IndexOf(element) != -1
 }
 
-func (b *BaseList) RemoveElement(element interface{}) int {
+func (b *BaseList[T]) RemoveElement(element T) int {
 	b.Remove(b.IndexOf(element))
 	return -1
 }
 
-func (b *BaseList) rangeCheck(index int) {
+func (b *BaseList[T]) rangeCheck(index int) {
 	if index < 0 || index >= b.size {
 		b.outOfBound(index)
 	}
 }
 
-func (b *BaseList) rangeCheckForAdd(index int) {
+func (b *BaseList[T]) rangeCheckForAdd(index int) {
 	if index < 0 || index > b.size {
 		b.outOfBound(index)
 	}
 }
 
-func (b *BaseList) outOfBound(index int) {
+func (b *BaseList[T]) outOfBound(index int) {
 	panic(errors.New("Size: " + strconv.Itoa(b.size) + " Index: " + strconv.Itoa(index)))
 }
