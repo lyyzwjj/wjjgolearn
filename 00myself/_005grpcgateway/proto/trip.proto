@@ -1,0 +1,53 @@
+syntax = "proto3";
+package coolcar;
+// "coolcar/proto/gen/go" 文件目录 trippb go的包名
+option go_package = "coolcar/proto/gen/go;trippb";
+// 
+option java_multiple_files = true;
+option java_package = "com.wjjzst.grpc.protos";
+option java_outer_classname = "Trip";
+message Location{
+  double latitude = 1;
+  double longitude = 2;
+}
+// 枚举类型
+enum TripStatus{
+  TS_NOT_SPECIFIED = 0;
+  NOT_STARTED = 1;
+  IN_PROGRESS = 2;
+  FINISHED = 3;
+  PAID = 4;
+}
+message Trip {
+  string start = 1;
+  // 复合类型
+  Location start_pos = 5;
+  // 数组 list类型
+  repeated Location path_locations = 7;
+  string end = 2;
+  Location end_pos = 6;
+  int32 duration_sec = 3;
+  int32 fee_cent = 4;
+  TripStatus status = 8;
+  // 合理的处理零值
+  // bool isPromotionTrip = 9; // yes
+  // bool isFromLoggedInUser = 10; // no   考虑到零值false 不填 就是全是未登录的用户创建的
+  // bool isFromGuestUser = 10; // yes   考虑到填了 才是 游客登录 不填就都是顾客登录
+}
+
+message GetTripRequest {
+  string id = 1;
+}
+
+message GetTripResponse{
+  string id = 1;
+  Trip trip = 2;
+}
+
+service TripService {
+  rpc GetTrip (GetTripRequest) returns (GetTripResponse);
+}
+
+// protoc -I=. --go_out=paths=source_relative:gen/go trip.proto
+// protoc -I=. --go-grpc_out=paths=source_relative:gen/go --go-grpc_opt=require_unimplemented_servers=false  --go_out=paths=source_relative:gen/go trip.proto
+// protoc -I=. --java_out=./ trip.protoprotoc
