@@ -3,11 +3,11 @@ package persist
 import (
 	"context"
 	"encoding/json"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/model"
 	"testing"
 
 	"github.com/olivere/elastic/v7"
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/model"
 )
 
 func TestSave(t *testing.T) {

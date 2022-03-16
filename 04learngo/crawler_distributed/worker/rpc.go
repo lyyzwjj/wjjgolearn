@@ -1,6 +1,6 @@
 package worker
 
-import "imooc.com/ccmouse/learngo/crawler/engine"
+import "github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
 
 type CrawlService struct{}
 

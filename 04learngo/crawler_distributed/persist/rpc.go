@@ -1,11 +1,11 @@
 package persist
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/persist"
 	"log"
 
 	"github.com/olivere/elastic/v7"
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/persist"
 )
 
 type ItemSaverService struct {

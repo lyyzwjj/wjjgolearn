@@ -1,11 +1,10 @@
 package client
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/rpcsupport"
 	"log"
-
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler_distributed/config"
-	"imooc.com/ccmouse/learngo/crawler_distributed/rpcsupport"
 )
 
 func ItemSaver(

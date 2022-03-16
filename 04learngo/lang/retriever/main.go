@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/lang/retriever/mock"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/lang/retriever/real"
 
 	"time"
-
-	"imooc.com/ccmouse/learngo/lang/retriever/mock"
-	"imooc.com/ccmouse/learngo/lang/retriever/real"
 )
 
 type Retriever interface {

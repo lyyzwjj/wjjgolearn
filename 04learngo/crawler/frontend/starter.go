@@ -1,9 +1,8 @@
 package main
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/frontend/controller"
 	"net/http"
-
-	"imooc.com/ccmouse/learngo/crawler/frontend/controller"
 )
 
 func main() {

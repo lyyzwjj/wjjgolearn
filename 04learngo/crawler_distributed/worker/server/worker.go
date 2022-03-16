@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/fetcher"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/rpcsupport"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/worker"
 
 	"log"
 
 	"flag"
-
-	"imooc.com/ccmouse/learngo/crawler/fetcher"
-	"imooc.com/ccmouse/learngo/crawler_distributed/rpcsupport"
-	"imooc.com/ccmouse/learngo/crawler_distributed/worker"
 )
 
 var port = flag.Int("port", 0,

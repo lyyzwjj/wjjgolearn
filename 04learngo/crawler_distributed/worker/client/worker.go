@@ -1,11 +1,10 @@
 package client
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/worker"
 	"net/rpc"
-
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler_distributed/config"
-	"imooc.com/ccmouse/learngo/crawler_distributed/worker"
 )
 
 func CreateProcessor(

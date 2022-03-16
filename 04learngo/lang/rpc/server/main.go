@@ -1,12 +1,11 @@
 package main
 
 import (
+	rpcdemo "github.com/lyyzwjj/wjjgolearn/04learngo/lang/rpc"
 	"log"
 	"net"
 	"net/rpc"
 	"net/rpc/jsonrpc"
-
-	"imooc.com/ccmouse/learngo/lang/rpc"
 )
 
 func main() {

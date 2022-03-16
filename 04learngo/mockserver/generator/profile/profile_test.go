@@ -2,16 +2,16 @@ package profile
 
 import (
 	"bytes"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/model"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/zhenai/parser"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/recommendation"
 	"html/template"
 	"math/rand"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/model"
-	"imooc.com/ccmouse/learngo/crawler/zhenai/parser"
-	"imooc.com/ccmouse/learngo/mockserver/config"
-	"imooc.com/ccmouse/learngo/mockserver/recommendation"
 )
 
 func TestGenerate(t *testing.T) {

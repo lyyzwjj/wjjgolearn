@@ -1,10 +1,9 @@
 package parser
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
 	"regexp"
-
-	"imooc.com/ccmouse/learngo/crawler/config"
-	"imooc.com/ccmouse/learngo/crawler/engine"
 )
 
 var carDetailRe = regexp.MustCompile(`<a href="(/m\d+/)" target="_blank"`)

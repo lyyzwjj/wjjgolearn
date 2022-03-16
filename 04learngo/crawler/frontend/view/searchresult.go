@@ -1,10 +1,9 @@
 package view
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/frontend/model"
 	"html/template"
 	"io"
-
-	"imooc.com/ccmouse/learngo/crawler/frontend/model"
 )
 
 type SearchResultView struct {

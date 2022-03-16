@@ -2,14 +2,12 @@ package worker
 
 import (
 	"errors"
-
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	xcar "github.com/lyyzwjj/wjjgolearn/04learngo/crawler/xcar/parser"
+	zhenai "github.com/lyyzwjj/wjjgolearn/04learngo/crawler/zhenai/parser"
 	"log"
-
-	"imooc.com/ccmouse/learngo/crawler/config"
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	xcar "imooc.com/ccmouse/learngo/crawler/xcar/parser"
-	zhenai "imooc.com/ccmouse/learngo/crawler/zhenai/parser"
 )
 
 type SerializedParser struct {

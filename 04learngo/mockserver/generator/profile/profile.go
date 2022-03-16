@@ -3,6 +3,8 @@ package profile
 
 import (
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/model"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/config"
 	"html/template"
 	"io"
 	"log"
@@ -10,8 +12,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"imooc.com/ccmouse/learngo/crawler/model"
-	"imooc.com/ccmouse/learngo/mockserver/config"
 )
 
 // Recommendation defines the interface for recommendation subsystem.

@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-
-	"imooc.com/ccmouse/learngo/lang/queue"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/lang/queue"
 )
 
 func main() {

@@ -1,12 +1,11 @@
 package parser
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/model"
 	"regexp"
 	"strconv"
-
-	"imooc.com/ccmouse/learngo/crawler/config"
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/model"
 )
 
 var ageRe = regexp.MustCompile(

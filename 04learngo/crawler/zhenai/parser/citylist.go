@@ -1,10 +1,9 @@
 package parser
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
 	"regexp"
-
-	"imooc.com/ccmouse/learngo/crawler/config"
-	"imooc.com/ccmouse/learngo/crawler/engine"
 )
 
 const cityListRe = `<a href="(.*www\.zhenai\.com/zhenghun/[0-9a-z]+)"[^>]*>([^<]+)</a>`

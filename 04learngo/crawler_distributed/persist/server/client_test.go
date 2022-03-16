@@ -1,14 +1,13 @@
 package main
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/model"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/rpcsupport"
 	"testing"
 
 	"time"
-
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/model"
-	"imooc.com/ccmouse/learngo/crawler_distributed/config"
-	"imooc.com/ccmouse/learngo/crawler_distributed/rpcsupport"
 )
 
 func TestItemSaver(t *testing.T) {

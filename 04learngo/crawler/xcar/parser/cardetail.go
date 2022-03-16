@@ -2,11 +2,10 @@ package parser
 
 import (
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/model"
 	"regexp"
 	"strconv"
-
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/model"
 )
 
 var priceReTmpl = `<a href="/%s/baojia/".*>(\d+\.\d+)</a>`

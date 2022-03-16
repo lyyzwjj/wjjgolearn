@@ -1,6 +1,11 @@
 package main
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/generator/city"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/generator/citylist"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/generator/profile"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/recommendation"
 	"html/template"
 	"log"
 	"math/rand"
@@ -8,11 +13,6 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"imooc.com/ccmouse/learngo/mockserver/config"
-	"imooc.com/ccmouse/learngo/mockserver/generator/city"
-	"imooc.com/ccmouse/learngo/mockserver/generator/citylist"
-	"imooc.com/ccmouse/learngo/mockserver/generator/profile"
-	"imooc.com/ccmouse/learngo/mockserver/recommendation"
 )
 
 const templateSuggestion = "Please make sure working directory is the root of the repository, where we have go.mod/go.sum. Suggested command line: go run mockserver/main.go"

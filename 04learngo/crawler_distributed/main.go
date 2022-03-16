@@ -2,6 +2,13 @@ package main
 
 import (
 	"errors"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/scheduler"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/zhenai/parser"
+	itemsaver "github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/persist/client"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/rpcsupport"
+	worker "github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/worker/client"
 	"net/rpc"
 
 	"log"
@@ -9,14 +16,6 @@ import (
 	"flag"
 
 	"strings"
-
-	"imooc.com/ccmouse/learngo/crawler/config"
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/scheduler"
-	"imooc.com/ccmouse/learngo/crawler/zhenai/parser"
-	itemsaver "imooc.com/ccmouse/learngo/crawler_distributed/persist/client"
-	"imooc.com/ccmouse/learngo/crawler_distributed/rpcsupport"
-	worker "imooc.com/ccmouse/learngo/crawler_distributed/worker/client"
 )
 
 var (

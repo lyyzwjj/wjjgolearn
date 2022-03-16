@@ -1,12 +1,11 @@
 package view
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/frontend/model"
+	common "github.com/lyyzwjj/wjjgolearn/04learngo/crawler/model"
 	"os"
 	"testing"
-
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/frontend/model"
-	common "imooc.com/ccmouse/learngo/crawler/model"
 )
 
 func TestSearchResultView_Render(t *testing.T) {

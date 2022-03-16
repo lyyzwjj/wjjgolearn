@@ -2,6 +2,10 @@ package controller
 
 import (
 	"context"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/frontend/model"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/frontend/view"
 	"net/http"
 	"reflect"
 	"regexp"
@@ -9,10 +13,6 @@ import (
 	"strings"
 
 	"github.com/olivere/elastic/v7"
-	"imooc.com/ccmouse/learngo/crawler/config"
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/frontend/model"
-	"imooc.com/ccmouse/learngo/crawler/frontend/view"
 )
 
 type SearchResultHandler struct {

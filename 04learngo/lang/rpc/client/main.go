@@ -2,10 +2,9 @@ package main
 
 import (
 	"fmt"
+	rpcdemo "github.com/lyyzwjj/wjjgolearn/04learngo/lang/rpc"
 	"net"
 	"net/rpc/jsonrpc"
-
-	"imooc.com/ccmouse/learngo/lang/rpc"
 )
 
 func main() {

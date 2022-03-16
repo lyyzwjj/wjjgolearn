@@ -1,6 +1,6 @@
 package scheduler
 
-import "imooc.com/ccmouse/learngo/crawler/engine"
+import "github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
 
 type QueuedScheduler struct {
 	requestChan chan engine.Request

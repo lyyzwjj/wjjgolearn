@@ -3,18 +3,17 @@ package fetcher
 import (
 	"bufio"
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/config"
+	"golang.org/x/net/html/charset"
+	"golang.org/x/text/encoding"
+	"golang.org/x/text/encoding/unicode"
+	"golang.org/x/text/transform"
 	"io/ioutil"
 	"net/http"
 
 	"log"
 
 	"time"
-
-	"golang.org/x/net/html/charset"
-	"golang.org/x/text/encoding"
-	"golang.org/x/text/encoding/unicode"
-	"golang.org/x/text/transform"
-	"imooc.com/ccmouse/learngo/crawler/config"
 )
 
 var (

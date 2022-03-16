@@ -1,11 +1,11 @@
 package main
 
 import (
-	"imooc.com/ccmouse/learngo/crawler/config"
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/persist"
-	"imooc.com/ccmouse/learngo/crawler/scheduler"
-	"imooc.com/ccmouse/learngo/crawler/zhenai/parser"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/persist"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/scheduler"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/zhenai/parser"
 )
 
 func main() {

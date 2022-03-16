@@ -8,7 +8,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"imooc.com/ccmouse/learngo/mockserver/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/config"
 )
 
 // Generator represents the citylist generator.

@@ -5,6 +5,8 @@ import (
 	"bytes"
 	"encoding/gob"
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/generator/profile"
 	"hash/fnv"
 	"html/template"
 	"io"
@@ -13,8 +15,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"imooc.com/ccmouse/learngo/mockserver/config"
-	"imooc.com/ccmouse/learngo/mockserver/generator/profile"
 )
 
 // Generator represents the city generator.

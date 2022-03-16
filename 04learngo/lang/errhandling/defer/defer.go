@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/lang/functional/fib"
 	"os"
 
 	"bufio"
-
-	"imooc.com/ccmouse/learngo/lang/functional/fib"
 )
 
 func tryDefer() {

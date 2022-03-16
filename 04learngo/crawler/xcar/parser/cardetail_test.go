@@ -1,11 +1,10 @@
 package parser
 
 import (
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/engine"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/model"
 	"io/ioutil"
 	"testing"
-
-	"imooc.com/ccmouse/learngo/crawler/engine"
-	"imooc.com/ccmouse/learngo/crawler/model"
 )
 
 func TestParseCarDetail(t *testing.T) {

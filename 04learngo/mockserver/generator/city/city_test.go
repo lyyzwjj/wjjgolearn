@@ -2,12 +2,11 @@ package city
 
 import (
 	"bytes"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/zhenai/parser"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/mockserver/generator/profile"
 	"html/template"
 	"testing"
-
-	"imooc.com/ccmouse/learngo/crawler/zhenai/parser"
-	"imooc.com/ccmouse/learngo/mockserver/config"
-	"imooc.com/ccmouse/learngo/mockserver/generator/profile"
 )
 
 func TestGenerate(t *testing.T) {

@@ -3,12 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler/config"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/persist"
+	"github.com/lyyzwjj/wjjgolearn/04learngo/crawler_distributed/rpcsupport"
 	"log"
 
 	"github.com/olivere/elastic/v7"
-	"imooc.com/ccmouse/learngo/crawler/config"
-	"imooc.com/ccmouse/learngo/crawler_distributed/persist"
-	"imooc.com/ccmouse/learngo/crawler_distributed/rpcsupport"
 )
 
 var port = flag.Int("port", 0,
