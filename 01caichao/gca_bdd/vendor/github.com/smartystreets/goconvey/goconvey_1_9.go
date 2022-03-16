@@ -1,3 +1,4 @@
+//go:build go1.9
 // +build go1.9
 
 // To work correctly with out of GOPATH modules, some functions needed to
