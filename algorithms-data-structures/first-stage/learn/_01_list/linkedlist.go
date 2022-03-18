@@ -1,49 +1,53 @@
 package list
 
-type nodeObj[T Comparable[T]] struct {
+import (
+	"github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/common"
+)
+
+type objNode[T common.Comparable[T]] struct {
 	element T
-	prev    *nodeObj[T]
-	next    *nodeObj[T]
+	prev    *objNode[T]
+	next    *objNode[T]
 }
 
-func NewNodeObj[T Comparable[T]](element T, prev, next *nodeObj[T]) *nodeObj[T] {
-	return &nodeObj[T]{
+func NewObjNode[T common.Comparable[T]](element T, prev, next *objNode[T]) *objNode[T] {
+	return &objNode[T]{
 		element: element,
 		prev:    prev,
 		next:    next,
 	}
 }
 
-type LinkedListObj[T Comparable[T]] struct {
-	BaseListObj[T]
-	first *nodeObj[T]
-	last  *nodeObj[T]
+type LinkedObjList[T common.Comparable[T]] struct {
+	BaseObjList[T]
+	first *objNode[T]
+	last  *objNode[T]
 }
 
-func NewLinkedListObj[T Comparable[T]]() *LinkedListObj[T] {
-	linkedList := &LinkedListObj[T]{}
-	linkedList.BaseListObj.AddWithIndex = linkedList.AddWithIndex
-	linkedList.BaseListObj.Remove = linkedList.Remove
-	linkedList.BaseListObj.IndexOf = linkedList.IndexOf
+func NewLinkedObjList[T common.Comparable[T]]() *LinkedObjList[T] {
+	linkedList := &LinkedObjList[T]{}
+	linkedList.BaseObjList.AddWithIndex = linkedList.AddWithIndex
+	linkedList.BaseObjList.Remove = linkedList.Remove
+	linkedList.BaseObjList.IndexOf = linkedList.IndexOf
 	return linkedList
 }
 
-func (l *LinkedListObj[T]) Get(index int) (element T) {
+func (l *LinkedObjList[T]) Get(index int) (element T) {
 	return l.node(index).element
 }
 
-//func (l *LinkedListObj) GetObj(index int, obj interface{}) {
-//	obj = l.nodeObj(index).element
+//func (l *LinkedObjList) GetObj(index int, obj interface{}) {
+//	obj = l.objNode(index).element
 //}
 
-func (l *LinkedListObj[T]) Set(index int, element T) (oldElement T) {
+func (l *LinkedObjList[T]) Set(index int, element T) (oldElement T) {
 	node := l.node(index)
 	old := node.element
 	node.element = element
 	return old
 }
 
-func (l *LinkedListObj[T]) IndexOf(element T) int {
+func (l *LinkedObjList[T]) IndexOf(element T) int {
 	node := l.first
 	for i := 0; i < l.size; i++ {
 		if element.Equals(node.element) {
@@ -54,11 +58,11 @@ func (l *LinkedListObj[T]) IndexOf(element T) int {
 	return elementNotFound
 }
 
-func (l *LinkedListObj[T]) AddWithIndex(index int, element T) {
+func (l *LinkedObjList[T]) AddWithIndex(index int, element T) {
 	l.rangeCheckForAdd(index)
 	if index == l.size { // 往最后一个元素时
 		oldLast := l.last
-		l.last = NewNodeObj[T](element, l.last, nil)
+		l.last = NewObjNode[T](element, l.last, nil)
 		if oldLast == nil { //链表为空时加的第一个元素
 			l.first = l.last
 		} else {
@@ -67,11 +71,11 @@ func (l *LinkedListObj[T]) AddWithIndex(index int, element T) {
 	} else {
 		next := l.node(index)
 		prev := next.prev // 链表只有一个元素的时候 第一个节点的前节点为空
-		node := NewNodeObj(element, prev, next)
+		node := NewObjNode(element, prev, next)
 		next.prev = node
 		if prev == nil { // 在第一个元素插入
 			l.first.next = node // 闭环
-			// l.first = nodeObj
+			// l.first = objNode
 		} else {
 			prev.next = node
 		}
@@ -79,7 +83,7 @@ func (l *LinkedListObj[T]) AddWithIndex(index int, element T) {
 	l.size++
 }
 
-func (l *LinkedListObj[T]) Remove(index int) (element T) {
+func (l *LinkedObjList[T]) Remove(index int) (element T) {
 	l.rangeCheck(index)
 	node := l.node(index)
 	prev := node.prev
@@ -98,12 +102,12 @@ func (l *LinkedListObj[T]) Remove(index int) (element T) {
 	return node.element
 }
 
-func (l *LinkedListObj[T]) Clear() {
+func (l *LinkedObjList[T]) Clear() {
 	l.size = 0
 	l.first = nil
 	l.last = nil
 }
-func (l *LinkedListObj[T]) GetAll() (lists []T) {
+func (l *LinkedObjList[T]) GetAll() (lists []T) {
 	node := l.first
 	for node != nil {
 		lists = append(lists, node.element)
@@ -111,7 +115,7 @@ func (l *LinkedListObj[T]) GetAll() (lists []T) {
 	}
 	return
 }
-func (l *LinkedListObj[T]) node(index int) (node *nodeObj[T]) {
+func (l *LinkedObjList[T]) node(index int) (node *objNode[T]) {
 	l.rangeCheck(index)
 	if index < l.size>>1 { // 从头遍历
 		node = l.first

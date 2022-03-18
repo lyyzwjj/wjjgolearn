@@ -3,7 +3,7 @@ package graph
 import (
 	"errors"
 	"fmt"
-	common "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_00_common"
+	"github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/common"
 	list "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_list"
 	heap "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_02_heap"
 	set "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_02_set"

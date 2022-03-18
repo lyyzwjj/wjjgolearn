@@ -2,12 +2,12 @@ package heap
 
 import (
 	"fmt"
-	common "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_00_common"
+	"github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/common"
 	"testing"
 )
 
 func TestHeap(t *testing.T) {
-	// test1()
+	test1()
 	test2()
 }
 func test2() {

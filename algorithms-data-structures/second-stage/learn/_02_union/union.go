@@ -1,6 +1,8 @@
 package union
 
-import common "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_00_common"
+import (
+	"github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/common"
+)
 
 type UnionFind interface {
 	Union(v1, v2 interface{})

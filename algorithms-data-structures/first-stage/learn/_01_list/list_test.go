@@ -2,15 +2,16 @@ package list
 
 import (
 	"fmt"
+	"github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/common"
 	"testing"
 )
 
-func initListObj[T Comparable[T]]() ListObj[T] {
-	var list ListObj[T]
+func initObjList[T common.Comparable[T]]() ObjList[T] {
+	var list ObjList[T]
 	//  TestArrayList
 	//	list = NewArrayList()
 	//  TestLinkedList
-	list = NewLinkedListObj[T]()
+	list = NewLinkedObjList[T]()
 	return list
 }
 
@@ -63,9 +64,9 @@ func NewAnimal(age int) Animal {
 	return Animal{age: age}
 }
 
-func TestListObj(t *testing.T) {
-	list := initListObj[Animal]()
-	// list := NewLinkedListObj[Animal]()
+func TestObjList(t *testing.T) {
+	list := initObjList[Animal]()
+	// list := NewLinkedObjList[Animal]()
 	// list := initList[Animal]()
 	// list := NewLinkedList[Animal]()
 

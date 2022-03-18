@@ -2,7 +2,7 @@ package heap
 
 import (
 	"errors"
-	common "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_00_common"
+	"github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/common"
 )
 
 type Heap interface {

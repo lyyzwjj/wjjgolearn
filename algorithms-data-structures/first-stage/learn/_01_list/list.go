@@ -2,10 +2,11 @@ package list
 
 import (
 	"errors"
+	"github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/common"
 	"strconv"
 )
 
-//type ListObj interface {
+//type ObjList interface {
 //	Add(element interface{})
 //	AddWithIndex(index int, element interface{})
 //	Remove(index int) interface{}
@@ -24,16 +25,7 @@ const (
 	elementNotFound = -1
 )
 
-type Equal[T any] interface {
-	Equals(t T) bool
-}
-
-type Comparable[T any] interface {
-	Equal[T]
-	CompareTo(t T) int
-}
-
-type ListObj[T Comparable[T]] interface {
+type ObjList[T common.Comparable[T]] interface {
 	Add(element T)
 	AddAll(elements []T)
 	AddWithIndex(index int, element T)
@@ -49,53 +41,53 @@ type ListObj[T Comparable[T]] interface {
 	GetAll() (lists []T)
 }
 
-type BaseListObj[T Comparable[T]] struct {
+type BaseObjList[T common.Comparable[T]] struct {
 	size         int
 	AddWithIndex func(index int, element T)
 	Remove       func(index int) (element T)
 	IndexOf      func(element T) int
 }
 
-func (b *BaseListObj[T]) Add(element T) {
+func (b *BaseObjList[T]) Add(element T) {
 	b.AddWithIndex(b.size, element)
 }
 
-func (b *BaseListObj[T]) AddAll(elements []T) {
+func (b *BaseObjList[T]) AddAll(elements []T) {
 	for _, element := range elements {
 		b.Add(element)
 	}
 }
 
-func (b *BaseListObj[T]) Size() int {
+func (b *BaseObjList[T]) Size() int {
 	return b.size
 }
 
-func (b *BaseListObj[T]) IsEmpty() bool {
+func (b *BaseObjList[T]) IsEmpty() bool {
 	return b.size == 0
 }
 
-func (b *BaseListObj[T]) Contains(element T) bool {
+func (b *BaseObjList[T]) Contains(element T) bool {
 	return b.IndexOf(element) != -1
 }
 
-func (b *BaseListObj[T]) RemoveElement(element T) int {
+func (b *BaseObjList[T]) RemoveElement(element T) int {
 	b.Remove(b.IndexOf(element))
 	return -1
 }
 
-func (b *BaseListObj[T]) rangeCheck(index int) {
+func (b *BaseObjList[T]) rangeCheck(index int) {
 	if index < 0 || index >= b.size {
 		b.outOfBound(index)
 	}
 }
 
-func (b *BaseListObj[T]) rangeCheckForAdd(index int) {
+func (b *BaseObjList[T]) rangeCheckForAdd(index int) {
 	if index < 0 || index > b.size {
 		b.outOfBound(index)
 	}
 }
 
-func (b *BaseListObj[T]) outOfBound(index int) {
+func (b *BaseObjList[T]) outOfBound(index int) {
 	panic(errors.New("Size: " + strconv.Itoa(b.size) + " Index: " + strconv.Itoa(index)))
 }
 

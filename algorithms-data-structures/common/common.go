@@ -1,5 +1,21 @@
 package common
 
+type Equal[T any] interface {
+	Equals(t T) bool
+}
+type Hash[T any] interface {
+	HashCode() int
+}
+type Object[T any] interface {
+	Equal[T]
+	Hash[T]
+}
+
+type Comparable[T any] interface {
+	Equal[T]
+	CompareTo(t T) int
+}
+
 type Comparator func(a, b interface{}) int
 
 // IntComparator 小顶堆
