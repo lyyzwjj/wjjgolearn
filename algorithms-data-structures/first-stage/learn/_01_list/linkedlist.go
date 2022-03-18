@@ -147,7 +147,7 @@ type LinkedList[T comparable] struct {
 	last  *node[T]
 }
 
-func NewLinkedList[T comparable]() *LinkedList[T] {
+func NewLinkedList[T comparable]() List[T] {
 	linkedList := &LinkedList[T]{}
 	linkedList.BaseList.AddWithIndex = linkedList.AddWithIndex
 	linkedList.BaseList.Remove = linkedList.Remove

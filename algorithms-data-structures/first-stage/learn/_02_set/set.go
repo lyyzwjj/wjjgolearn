@@ -1,11 +1,11 @@
 package set
 
-type Set interface {
+type Set[T any] interface {
 	Size() int
 	IsEmpty() bool
 	Clear()
-	Contains(element interface{}) bool
-	Add(element interface{})
-	Remove(element interface{})
-	GetAll() (sets []interface{})
+	Contains(element T) bool
+	Add(element T)
+	Remove(element T)
+	GetAll() (sets []T)
 }

@@ -6,7 +6,7 @@ import (
 )
 
 func TestBaseQueue(t *testing.T) {
-	baseQueue := NewBaseQueue()
+	baseQueue := NewBaseQueue[int]()
 	baseQueue.EnQueue(11)
 	baseQueue.EnQueue(22)
 	baseQueue.EnQueue(33)

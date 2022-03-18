@@ -1,41 +1,41 @@
 package set
 
-type HashSet struct {
-	hashmap map[interface{}]interface{}
+type HashSet[T comparable] struct {
+	hashmap map[T]any
 }
 
-func NewHashSet() Set {
-	hashSet := &HashSet{
-		hashmap: make(map[interface{}]interface{}),
+func NewHashSet[T comparable]() Set[T] {
+	hashSet := &HashSet[T]{
+		hashmap: make(map[T]any),
 	}
 	return hashSet
 }
 
-func (h *HashSet) Size() int {
+func (h *HashSet[T]) Size() int {
 	return len(h.hashmap)
 }
 
-func (h *HashSet) IsEmpty() bool {
+func (h *HashSet[T]) IsEmpty() bool {
 	return len(h.hashmap) == 0
 }
 
-func (h *HashSet) Clear() {
-	h.hashmap = make(map[interface{}]interface{})
+func (h *HashSet[T]) Clear() {
+	h.hashmap = make(map[T]any)
 }
 
-func (h *HashSet) Contains(element interface{}) (ok bool) {
+func (h *HashSet[T]) Contains(element T) (ok bool) {
 	_, ok = h.hashmap[element]
 	return
 }
 
-func (h *HashSet) Add(element interface{}) {
+func (h *HashSet[T]) Add(element T) {
 	h.hashmap[element] = nil
 }
 
-func (h *HashSet) Remove(element interface{}) {
+func (h *HashSet[T]) Remove(element T) {
 	delete(h.hashmap, element)
 }
-func (h *HashSet) GetAll() (sets []interface{}) {
+func (h *HashSet[T]) GetAll() (sets []T) {
 	for key := range h.hashmap {
 		sets = append(sets, key)
 	}

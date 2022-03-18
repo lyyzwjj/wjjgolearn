@@ -6,7 +6,7 @@ import (
 )
 
 func TestBaseStack(t *testing.T) {
-	BaseStack := NewBaseStack()
+	BaseStack := NewBaseStack[int]()
 	BaseStack.Push(11)
 	BaseStack.Push(22)
 	BaseStack.Push(33)
