@@ -106,6 +106,3 @@ trunk/.idea/
 
 # production file
 dist/
-
-# go practice file
-*.go

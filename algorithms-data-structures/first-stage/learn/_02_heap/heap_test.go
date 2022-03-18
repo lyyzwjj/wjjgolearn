@@ -2,7 +2,7 @@ package heap
 
 import (
 	"fmt"
-	common "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_01_common"
+	common "github.com/lyyzwjj/wjjgolearn/algorithms-data-structures/first-stage/learn/_00_common"
 	"testing"
 )
 
