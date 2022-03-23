@@ -1,4 +1,4 @@
-package main
+package _004crypto
 
 import (
 	"bytes"
@@ -6,6 +6,7 @@ import (
 	"crypto/cipher"
 	"encoding/base64"
 	"fmt"
+	"testing"
 )
 
 //var (
@@ -33,7 +34,7 @@ var envProperties = map[string]properties{
 	},
 }
 
-func main() {
+func TestAesUtil(t *testing.T) {
 	if properties, ok := envProperties["test"]; !ok {
 		fmt.Println("查无此key")
 	} else {
