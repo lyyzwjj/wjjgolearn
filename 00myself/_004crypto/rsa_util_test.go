@@ -12,7 +12,7 @@ import (
 
 func TestRsaUtil(t *testing.T) {
 	// key, err := rsa.GenerateKey(rand.Reader, 128)
-	key, err := rsa.GenerateKey(rand.Reader, 512)
+	key, err := rsa.GenerateKey(rand.Reader, 2048)
 	if err != nil {
 		fmt.Println(err)
 	}
