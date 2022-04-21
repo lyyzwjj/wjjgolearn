@@ -15,6 +15,7 @@ func TestBase64Encrypt(t *testing.T) {
 	fmt.Println(aliSecretTarget)
 
 }
+
 func TestBase64Decrypt(t *testing.T) {
 	aliIdTarget := "d3g0MjM0YzZhNDc4MDYxMzMw"
 	if aliIdSource, err := base64.StdEncoding.DecodeString(aliIdTarget); err == nil {
