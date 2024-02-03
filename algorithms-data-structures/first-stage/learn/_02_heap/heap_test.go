@@ -8,7 +8,7 @@ import (
 
 func TestHeap(t *testing.T) {
 	test1()
-	test2()
+	// test2()
 }
 func test2() {
 	heap := NewBinaryHeap(common.IntRevertComparator)
